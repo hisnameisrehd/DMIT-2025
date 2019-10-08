@@ -1,0 +1,3 @@
+Since we are still having trouble with our webserver, here's an activity to do from an XAMPP configured computer (at home)
+
+This activity will become Lab 2.
