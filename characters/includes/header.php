@@ -51,6 +51,20 @@ include("mysql_connect.php"); // here we include the connection script; since th
     h5 {
       font-family: 'turtle';
       font-size: 5rem;
+      background: -webkit-linear-gradient(#003800, #8fd129);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .bg-turtle-red {
+      background: #ed1c24;
+      color: white;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-top: 3px solid black;
+      border-bottom: 3px solid black;
+      border-left: 0;
+      border-right: 0;
     }
   </style>
 
@@ -59,7 +73,7 @@ include("mysql_connect.php"); // here we include the connection script; since th
 <body>
 
 
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 fixed-top">
+  <nav class="navbar navbar-expand-md navbar-dark bg-turtle-red mb-4 fixed-top">
     <a class="navbar-brand" href="<?php echo BASE_URL ?>index.php"><i class="material-icons" style="font-size:36px">home</i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
