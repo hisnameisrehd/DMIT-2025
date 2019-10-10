@@ -71,7 +71,7 @@ while ($row = mysqli_fetch_array($result)) {
     $lname = $row['last_name'];
     $id = $row['id'];
 
-    $editLinks .= "<a href=\"edit.php?id=$id\">$fname $lname</a><br />";
+    $editLinks .= "\n<hr><a href=\"edit.php?id=$id\"><div class=\"row pl-2\"><div class=\"col-sm\">$fname $lname</div></div></a>";
 }
 
 // Step 2: Prepopulate the fields based on the selected character
