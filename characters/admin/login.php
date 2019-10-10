@@ -30,43 +30,43 @@ include("../includes/header.php");
 
 // echo "$username_good, $pw_enc";
 
-//create a conditional that detect if the user has clicked the button
-
 ?>
+<style>
+	@font-face {
+		font-family: 'turtle';
+		src: url(../fonts/Turtles.otf),
+			url(../fonts/Turtles.woff);
+	}
 
-    <h1><?php echo APP_NAME ?></h1>
-    <h3>~Login</h3>
-<div class="d-block">
-	<div class="row-container justify-content-center">
-
-		<form style="width:65vw;" name="myform" class="formstyle" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-
-			<!-- you can copy/paste one of these form-groups, then change the form element and label within -->
-			<div class="form-group">
-				<label for="username">Username:</label>
-				<input type="text" class="form-control" name="username">
-			</div>
-			<!-- / form-group -->
-
-			<div class="form-group">
-				<label for="password">Password:</label>
-				<input type="password" class="form-control" name="password">
-			</div>
-
-
-
-			<input type="submit" class="btn btn-default" name="mysubmit">
-			<br />
-			<br />
-			<?php
-			if ($msg) {
-				echo "\n\t<div class=\"alert alert-info\">$msg</div>";
-			}
-			?>
-
-		</form>
+	h1,
+	h2,
+	h3,
+	h4,
+	h5 {
+		font-size: 5rem;
+		font-family: 'turtle';
+	}
+</style>
+<h1>Login</h1>
+<form id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+	<div class="form-group">
+		<label for="username">Username:</label>
+		<input class="form-control" type="text" name="username">
 	</div>
-</div>
+	<div class="form-group">
+		<label for="password">Password:</label>
+		<input class="form-control" type="password" name="password">
+	</div>
+	<div class="form-group">
+		<label for="submit">&nbsp;</label>
+		<input type="submit" name="mysubmit" class="btn btn-info" value="Submit">
+	</div>
+	<?php
+	if ($msg) {
+		echo "\n\t<div class=\"alert alert-info\">$msg</div>";
+	}
+	?>
+</form>
 <?php
 include("../includes/footer.php");
 ?>
