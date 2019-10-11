@@ -3,8 +3,15 @@ session_start();
 
 include("includes/header.php");
 
+if (isset($_POST['submit'])) {
+  $searchterm = trim($_POST['searchterm']);
+  $valid = 1;
 
-
+  if (trim($searchterm) == "") {
+    $valid = 0;
+    $emptyMsg = "<div class=\"alert alert-danger\" role=\"alert\">What The Shell! Provide Search Terms!</div>";
+  }
+}
 ?>
 
 <h1>Search</h1>
@@ -12,7 +19,14 @@ include("includes/header.php");
 <form id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
   <div class="form-group">
     <label for="searchterm">Search:</label>
-    <input class="form-control" type="text" name="searchterm">
+    <input class="form-control" type="text" name="searchterm" value="<?php if (trim($searchterm) != "") {
+                                                                        echo $searchterm;
+                                                                      } ?>">
+    <?php
+    if (trim($emptyMsg) != "" && $valid == 0) {
+      echo $emptyMsg;
+    }
+    ?>
   </div>
   <div class="form-group">
     <label for="submit">&nbsp;</label>
@@ -35,7 +49,7 @@ if (isset($_POST['submit'])) {
     $result = mysqli_query($con, $sql) or die(mysqli_error($con));
 
     if (mysqli_num_rows($result) > 0) {
-      echo "<div class=\"alert alert-success\" role=\"alert\">It's Ninja Time!</div>";
+      echo "<div class=\"alert alert-success\" role=\"alert\">It's Ninja Time! Showing results for $searchterm</div>";
 
       while ($row = mysqli_fetch_array($result)) {
         echo "<div class=\"char-card\">";
@@ -70,8 +84,6 @@ if (isset($_POST['submit'])) {
     } else {
       echo "<div class=\"alert alert-danger\" role=\"alert\">Holy Chalupa! No Results!</div>";
     }
-  } else {
-    echo "<div class=\"alert alert-danger\" role=\"alert\">What The Shell! Provide Search Terms!</div>";
   }
 }
 // echo $searchterm; // testing
