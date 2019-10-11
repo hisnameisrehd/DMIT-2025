@@ -38,6 +38,12 @@ include("mysql_connect.php"); // here we include the connection script; since th
   <link href="<?php echo BASE_URL ?>css/bootstrap-lumen.css" rel="stylesheet">
 
   <style type="text/css">
+    html,
+    body {
+      height: 100%;
+      background: linear-gradient(#3a3a3a, #8a8a8a, #3a3a3a);
+    }
+
     @font-face {
       font-family: 'turtle';
       src: url(fonts/Turtles.otf),
@@ -65,6 +71,68 @@ include("mysql_connect.php"); // here we include the connection script; since th
       border-bottom: 3px solid black;
       border-left: 0;
       border-right: 0;
+    }
+
+    .char-card {
+      border: 2px solid gray;
+      background: rgb(173, 159, 159);
+      width: 75%;
+      margin: 0 auto;
+      margin-bottom: .75rem;
+    }
+
+    .char-card h3 {
+      font-size: 2rem;
+    }
+
+    .char-card p:nth-child(2) {
+      background: red;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      background: rgb(240, 218, 218);
+      border-radius: 6px;
+    }
+
+    .type-style-turtle {
+      background: rgb(46, 202, 46);
+      padding: .3rem .5rem;
+      border-radius: 6px;
+    }
+
+    .type-style-evil {
+      background: black;
+      color: white;
+      padding: .3rem .5rem;
+      border-radius: 6px;
+    }
+
+    .type-style-rat {
+      background: rgb(240, 155, 28);
+      padding: .3rem .5rem;
+      border-radius: 6px;
+    }
+
+    .type-style-human {
+      background: rgb(142, 243, 238);
+      padding: .3rem .5rem;
+      border-radius: 6px;
+    }
+
+    .type-style-ninja {
+      background: rgb(236, 58, 236);
+      padding: .3rem .5rem;
+      border-radius: 6px;
+    }
+
+    .type-style-unknown {
+      background: rgb(255, 192, 192);
+      padding: .3rem .5rem;
+      border-radius: 6px;
+    }
+
+    #style-links {
+      color: white;
+      text-transform: uppercase;
     }
   </style>
 

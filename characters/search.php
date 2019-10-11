@@ -1,63 +1,79 @@
 <?php
 session_start();
 
-include ("includes/header.php");
+include("includes/header.php");
 
 
 
 ?>
 
-  <h1>Search</h1>
+<h1>Search</h1>
 <!-- Search form -->
 <form id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
   <div class="form-group">
     <label for="searchterm">Search:</label>
-    <input class="form-control" type="text" name="searchterm" >
+    <input class="form-control" type="text" name="searchterm">
   </div>
-    <div class="form-group">
-        <label for="submit">&nbsp;</label>
-        <input type="submit" name="submit" class="btn btn-info" value="Submit">
-    </div>
-</form> 
+  <div class="form-group">
+    <label for="submit">&nbsp;</label>
+    <input type="submit" name="submit" class="btn btn-info" value="Submit">
+  </div>
+</form>
 
 
 <?php
 
-if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
   $searchterm = trim($_POST['searchterm']);
-  if($searchterm != "") {
+  if ($searchterm != "") {
 
     $sql = "SELECT * FROM characters WHERE
     first_name LIKE '$searchterm'
     OR last_name LIKE '$searchterm'
     OR description LIKE '%$searchterm%'";
-    
+
     $result = mysqli_query($con, $sql) or die(mysqli_error($con));
-    
-    if(mysqli_num_rows($result) > 0) {
-    //  echo "yes";
-    echo "<div class=\"row\">" ;
-    echo "<div class=\"col-1\"><strong>ID</strong></div>" ;
-    echo "<div class=\"col-3\"><strong>First Name</strong></div>" ;
-    echo "<div class=\"col-3\"><strong>Last Name</strong></div>" ;
-    echo "<div class=\"col-5\"><strong>Description</strong></div>" ;
-    echo "</div>" ;
-    while($row = mysqli_fetch_array($result)) {
-        echo "\n<hr>";
-        echo "<div class=\"row\">" ;
-        echo "<div class=\"col-1\">" . $row['id'] . "</div>" ;
-        echo "<div class=\"col-3\">" . $row['first_name'] . "</div>" ;
-        echo "<div class=\"col-3\">" . $row['last_name'] . "</div>" ;
-        echo "<div class=\"col-5\">" . $row['description'] . "</div>" ;
-        echo "</div>" ;
-    }
+
+    if (mysqli_num_rows($result) > 0) {
+      echo "<div class=\"alert alert-success\" role=\"alert\">It's Ninja Time!</div>";
+
+      while ($row = mysqli_fetch_array($result)) {
+        echo "<div class=\"char-card\">";
+        echo "<div class=\"card-body\">";
+        echo "<h3 class=\"card-title\">" . $row['first_name'] . "</h3>";
+        echo "<p class=\"card-text\">" . $row['description'] . "</p>";
+        echo "<hr />";
+        if (strtolower($row['first_name']) == 'shredder' || strtolower($row['first_name']) == 'krang') {
+          echo "<span class=\"type-style-evil mr-1\">Evil</span>";
+        }
+        if (strtolower($row['last_name']) == 'turtle' || strtolower($row['last_name']) == 'rat' || strtolower($row['first_name']) == 'shredder') {
+          echo "<span class=\"type-style-ninja mr-1\">Ninja</span>";
+        }
+        if (strtolower($row['last_name']) != 'turtle' && strtolower($row['last_name']) != 'rat' && strtolower($row['last_name']) != 'human') {
+          echo "<span class=\"type-style-unknown\">" . $row['last_name'] . "</span>";
+        } else {
+          if (strtolower($row['last_name']) == 'turtle') {
+            echo "<span class=\"type-style-turtle\">" . $row['last_name'] . "</span>";
+          } else {
+            if (strtolower($row['last_name']) == 'rat') {
+              echo "<span class=\"type-style-rat\">" . $row['last_name'] . "</span>";
+            } else {
+              if (strtolower($row['last_name']) == 'human') {
+                echo "<span class=\"type-style-human\">" . $row['last_name'] . "</span>";
+              }
+            }
+          }
+        }
+        echo "</div>";
+        echo "</div>";
+      }
     } else {
-      echo "<div class=\"alert alert-danger\" role=\"alert\">No Results</div>";
+      echo "<div class=\"alert alert-danger\" role=\"alert\">Holy Chalupa! No Results!</div>";
     }
   } else {
-    echo "<div class=\"alert alert-danger\" role=\"alert\">You must provide search terms.</div>";
-		}
+    echo "<div class=\"alert alert-danger\" role=\"alert\">What The Shell! Provide Search Terms!</div>";
   }
-  // echo $searchterm; // testing
-include ("includes/footer.php");
+}
+// echo $searchterm; // testing
+include("includes/footer.php");
 ?>

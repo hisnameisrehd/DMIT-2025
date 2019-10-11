@@ -35,24 +35,24 @@ if (isset($_POST['submit'])) {
     if ((strlen($fname) < 3) || (strlen($fname) > 20)) {
         $valid = 0;
         // specific message
-        $valFNameMsg = "Please enter a first name between 3 and 20 characters.";
+        $valFNameMsg = "Please enter a name between 3 and 20 characters.";
     }
     if ((strlen($lname) < 3) || (strlen($lname) > 20)) {
         $valid = 0;
         // specific message
-        $valLNameMsg = "Please enter a last name between 3 and 20 characters.";
+        $valLNameMsg = "Please enter a race type between 3 and 20 characters.";
     }
-    if ((strlen($description) < 20) || (strlen($description) > 400)) {
+    if ((strlen($description) < 20) || (strlen($description) > 512)) {
         $valid = 0;
         // specific message
-        $valDescMsg = "Please enter a description between 20 and 400 characters.";
+        $valDescMsg = "Please enter a description between 20 and 512 characters.";
     }
     // success. if our boolean is still 1 then user form data is good.
     if ($valid == 1) {
         $fname = trim($_POST['fname']);
         $lname = trim($_POST['lname']);
         $description = trim($_POST['description']);
-        $msgSuccess = "SUCCESS. Form data has been stored.";
+        $msgSuccess = "Cowabunga! Form data has been stored.";
         // Editing or changing data in a DB: UPDATE
         mysqli_query($con, "UPDATE characters SET 
                 first_name = '$fname', 
@@ -71,7 +71,7 @@ while ($row = mysqli_fetch_array($result)) {
     $lname = $row['last_name'];
     $id = $row['id'];
 
-    $editLinks .= "\n<hr><a href=\"edit.php?id=$id\"><div class=\"row pl-2\"><div class=\"col-sm\">$fname $lname</div></div></a>";
+    $editLinks .= "\n<hr><a id=\"style-links\" href=\"edit.php?id=$id\"><div class=\"row pl-2\"><div class=\"col-sm\">$fname $lname</div></div></a>";
 }
 
 // Step 2: Prepopulate the fields based on the selected character
@@ -118,7 +118,7 @@ while ($row = mysqli_fetch_array($result)) {
                 echo $msgPreSuccess . $msgSuccess . $msgPost;
             } ?>
             <div class="form-group">
-                <label for="fname">First Name:</label>
+                <label for="fname">Full Name:</label>
                 <input type="text" name="fname" class="form-control" value="<?php if ($fname) {
                                                                                 echo $fname;
                                                                             } ?>">
@@ -127,7 +127,7 @@ while ($row = mysqli_fetch_array($result)) {
                 } ?>
             </div>
             <div class="form-group">
-                <label for="lname">Last Name:</label>
+                <label for="lname">Race / Type:</label>
                 <input type="text" name="lname" class="form-control" value="<?php if ($lname) {
                                                                                 echo $lname;
                                                                             } ?>">
