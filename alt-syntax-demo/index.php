@@ -2,7 +2,7 @@
 
 /*Note: Feel free to use this with any data set you like. */
 
-$con = mysqli_connect("localhost", "username","password","db_name");
+$con = mysqli_connect("localhost", "npeters5", "AIMFwNnBQnioFYc", "npeters5_dmit2025");
 
 ?>
 <!DOCTYPE html>
@@ -45,8 +45,10 @@ $result = mysqli_query($con, "SELECT * FROM cd_catalog_class LIMIT 5");
 <?php while($row = mysqli_fetch_array($result)): ?>
 	<!-- Go ahead and do some HTML/CSS styling in here...I dare you! -->
 <hr>
-Artist Name: <?php echo $row['artist'];?><br>
-CD Title: <?php echo $row['title'];?><br>
+<b>Artist Name:</b> <?php echo $row['artist'];?><br>
+<b>CD Title:</b> <?php echo $row['title'];?><br>
+<b>Release Year:</b> <?php echo $row['year'];?><br>
+<b>Genre:</b> <?php echo $row['genre'];?><br>
 
 <?php endwhile; ?>
 
