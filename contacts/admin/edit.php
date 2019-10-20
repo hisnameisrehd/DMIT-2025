@@ -315,7 +315,7 @@ while ($row = mysqli_fetch_array($result)) {
             <div class="form-group">
                 <label for="submit">&nbsp;</label>
                 <input type="submit" name="submit" class="btn btn-info" value="Submit">
-                <a class="btn btn-danger del" href="delete.php?id=<?php echo $char_id ?>">Delete</a>
+                <a class="btn btn-danger del" href="delete.php?id=<?php echo $contact_id ?>">Delete</a>
                 <script>
                     $(document).ready(function() {
                         $(".del").click(function() {

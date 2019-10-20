@@ -14,8 +14,7 @@
     if(!is_numeric($contact_id)) {
         header("Location: edit.php");
     } else {
-        // echo $char_id;
-    
+        // echo $contact_id;
         // Removing data in a DB: DELETE
     
         mysqli_query($con, "DELETE FROM npe_contacts
