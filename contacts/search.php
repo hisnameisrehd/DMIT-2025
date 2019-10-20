@@ -50,21 +50,48 @@ if (isset($_POST['submit'])) {
     <?php if ($result != "") : ?>
         <?php if ($row = mysqli_num_rows($result) > 0) : ?>
             <!-- Go ahead and do some HTML/CSS styling in here...I dare you! -->
+            <style>
+                .search-link {
+                    text-decoration: none;
+                    color: black;
+                }
+
+                .search-link-header {
+                    font-size: 1.3rem;
+                    font-weight: 700;
+                }
+
+                .search-link :hover {
+                    text-decoration: none;
+                    color: black;
+                    background: lightgray;
+                }
+            </style>
             <div class="alert alert-success" role="alert">Success! Showing results for <?php echo $searchterm; ?></div>
 
             <?php while ($row = mysqli_fetch_array($result)) : ?>
-                <hr />
-                <b><?php echo $row['npe_business_name']; ?></b>
-                <p><?php echo $row['npe_description']; ?>
-                    <br />
-                    Contact: <?php echo $row['npe_person_name'] ?>
-                    <br />
-                    Phone: <?php echo $row['npe_phone'] ?>
-                </p>
+                <a class="search-link" href="companyprofile.php?id=<?php echo $row['cid']; ?>">
+                    <hr />
+                    <div class="d-inline-block">
+                        <p>
+                            <span class="search-link-header"><?php echo $row['npe_business_name']; ?></span>
+                            <br />
+                            <?php if ($row['npe_description'] != "") : ?>
+                                <?php echo $row['npe_description']; ?>
+                            <?php endif; ?>
+                            <?php if ($row['npe_person_name'] != "") : ?>
+                                <br />
+                                <b>Contact:</b> <?php echo $row['npe_person_name']; ?>
+                            <?php endif; ?>
+                            <br />
+                            <i>Phone: <?php echo $row['npe_phone'] ?></i>
+                        </p>
+                    </div>
+                </a>
             <?php endwhile; ?>
             <!-- end mysqli_fetch_array() -->
-            <?php else : ?>
-                <div class="alert alert-warning" role="alert">Sorry, no results for <?php echo $searchterm; ?></div>
+        <?php else : ?>
+            <div class="alert alert-warning" role="alert">Sorry, no results for <?php echo $searchterm; ?></div>
         <?php endif; ?>
         <!-- end result = NULL ? -->
     <?php endif; ?>
