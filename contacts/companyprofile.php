@@ -50,10 +50,10 @@ $result = mysqli_query($con, "SELECT * FROM npe_contacts WHERE cid = $id");
   <?php endif; ?>
   <?php if ($row['npe_resume'] == 0) : ?>
     <hr />
-    <b>Résumé: </b><?php echo "Submitted"; ?>
+    <b>Résumé: </b><?php echo "Not Submitted"; ?>
   <?php elseif ($row['npe_resume'] == 1) : ?>
     <hr />
-    <b>Résumé: </b><?php echo "Not Submitted"; ?>
+    <b>Résumé: </b><?php echo "Submitted"; ?>
   <?php endif; ?>
   <?php if ($row['npe_description'] != "") : ?>
     <hr />

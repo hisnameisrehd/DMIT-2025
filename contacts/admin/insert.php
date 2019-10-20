@@ -61,10 +61,12 @@ if (isset($_POST['submit'])) {
 		$valBusNameMsg = "Please enter a business name between 3 and 20 characters.";
 	}
 	// Contact name
+	/*
 	if ((strlen($contactName) < 3) || (strlen($contactName) > 20)) {
 		$valid = 0;
 		$valContactNameMsg = "Please enter a contact name between 3 and 20 characters.";
 	}
+	*/
 	// Email
 	if ($email != "") {
 		$email = filter_var($email, FILTER_SANITIZE_EMAIL);
@@ -91,30 +93,40 @@ if (isset($_POST['submit'])) {
 		}
 	}
 	// Address
+	/*
 	if ($address == "") {
 		$valid = 0;
 		$valAddressMsg = "Please enter an address.";
 	}
+	*/
 	// City
+	/*
 	if ($city == "") {
 		$valid = 0;
 		$valCityMsg = "Please enter a city name.";
 	}
-	// province validation
+	*/
+	// Province validation
+	/*
 	if ($province == "") {
 		$valid = 0;
 		$valProvinceMsg = "Please select a province.";
 	}
-	// Contact name
+	*/
+	// Postal code
+	/*
 	if ((strlen($postal) < 5) || (strlen($postal) > 7)) {
 		$valid = 0;
 		$valPostalMsg = "Please enter a postal/zip code between 5 and 7 .";
 	}
+	*/
 	// Description
+	/*
 	if ((strlen($description) < 20) || (strlen($description) > 512)) {
 		$valid = 0;
 		$valDescMsg = "Please enter a description between 20 and 512 characters.";
 	}
+	*/
 
 	// SUCCESS. 
 	// If our boolean is still 1 then user form data is good.
@@ -132,8 +144,8 @@ if (isset($_POST['submit'])) {
 				npe_postal,
 				npe_city,
 				npe_province,
-				npe_resume,
-				npe_description) 
+				npe_description,
+				npe_resume) 
 			VALUES('$busName', 
 				'$contactName', 
 				'$email', 
@@ -157,7 +169,7 @@ if (isset($_POST['submit'])) {
 		$province = "";
 		$postal = "";
 		$description = "";
-		$resume = false;
+		$resume = "";
 	}
 }
 ?>
