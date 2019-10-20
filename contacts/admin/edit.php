@@ -135,6 +135,16 @@ $result = mysqli_query($con, "SELECT * FROM npe_contacts") or die(mysqli_error($
 // loop trhough results
 while ($row = mysqli_fetch_array($result)) {
     $busName = $row['npe_business_name'];
+    $contactName = $row['npe_person_name'];
+    $email = $row['npe_email'];
+    $webURL = $row['npe_url'];
+    $phone = $row['npe_phone'];
+    $address = $row['npe_address1'];
+    $postal = $row['npe_postal'];
+    $city = $row['npe_city'];
+    $province = $row['npe_province'];
+    $resume = $row['npe_resume'];
+    $description = $row['npe_description'];
     $id = $row['cid'];
 
     $editLinks .= "\n<hr><a id=\"style-links\" href=\"edit.php?id=$id\"><div class=\"row pl-2\"><div class=\"col-sm\">$busName</div></div></a>";

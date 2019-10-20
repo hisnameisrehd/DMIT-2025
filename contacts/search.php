@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
     <?php if ($result != "") : ?>
         <?php if ($row = mysqli_num_rows($result) > 0) : ?>
             <!-- Go ahead and do some HTML/CSS styling in here...I dare you! -->
-            <div class="alert alert-success" role="alert">Success! Showing results for <?php $searchterm ?></div>
+            <div class="alert alert-success" role="alert">Success! Showing results for <?php echo $searchterm; ?></div>
 
             <?php while ($row = mysqli_fetch_array($result)) : ?>
                 <hr />
@@ -63,6 +63,8 @@ if (isset($_POST['submit'])) {
                 </p>
             <?php endwhile; ?>
             <!-- end mysqli_fetch_array() -->
+            <?php else : ?>
+                <div class="alert alert-warning" role="alert">Sorry, no results for <?php echo $searchterm; ?></div>
         <?php endif; ?>
         <!-- end result = NULL ? -->
     <?php endif; ?>
