@@ -1,12 +1,12 @@
 <?php
-// session_start();
-// if (isset($_SESSION['PHP_Test_Secure'])) {
-// 	// echo "Logged In.";
-// } else {
-// 	//when using redirect, make sure that everything else works first. If not, remove redirect to debug.
-// 	// echo "Not Logged In.";
-// 	header("Location:login.php");
-// }
+session_start();
+if (isset($_SESSION['PHP_Test_Secure'])) {
+	// echo "Logged In.";
+} else {
+	//when using redirect, make sure that everything else works first. If not, remove redirect to debug.
+	// echo "Not Logged In.";
+	header("Location:login.php");
+}
 include("../includes/header.php");
 
 if (isset($_POST['submit'])) {

@@ -51,12 +51,13 @@ include("mysql_connect.php");// here we include the connection script; since thi
          
           <li class="nav-item active">
             <!-- This is a placeholder link. You will need to change this to link to your files. -->
-            <a class="nav-link" href="<?php echo BASE_URL ?>#">Link</a>
+            <a class="nav-link" href="<?php echo BASE_URL ?>search.php">Search</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <a class="dropdown-item" href="<?php echo BASE_URL ?>admin/insert.php">Insert</a>
+              <a class="dropdown-item" href="<?php echo BASE_URL ?>admin/edit.php">Edit</a>
               <!-- <a class="dropdown-item" href="<?php echo BASE_URL ?>#">Link</a> -->
               
 
@@ -64,6 +65,17 @@ include("mysql_connect.php");// here we include the connection script; since thi
             </div>
           </li>
         </ul>
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <?php
+          if (isset($_SESSION['PHP_Test_Secure'])) {
+            echo "<a class=\"nav-link\" href=\"" .
+              BASE_URL .
+              "admin/logout.php\">Logout</a>";
+          }
+          ?>
+        </li>
+      </ul>
         <!-- Search Bar: 
         <form class="form-inline mt-2 mt-md-0">
           
