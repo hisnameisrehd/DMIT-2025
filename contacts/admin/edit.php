@@ -186,7 +186,7 @@ while ($row = mysqli_fetch_array($result)) {
                 echo $msgPreSuccess . $msgSuccess . $msgPost;
             } ?>
             <div class="form-group">
-                <label for="busname">Business Name:</label>
+                <label class="required" for="busname">Business Name:</label>
                 <input type="text" name="busname" class="form-control" value="<?php if ($busName) {
                                                                                     echo $busName;
                                                                                 } ?>">
@@ -204,7 +204,7 @@ while ($row = mysqli_fetch_array($result)) {
                 } ?>
             </div>
             <div class="form-group">
-                <label for="email">Email:</label>
+                <label class="required" for="email">Email:</label>
                 <input type="text" name="email" class="form-control" value="<?php if ($email) {
                                                                                 echo $email;
                                                                             } ?>">
@@ -213,7 +213,7 @@ while ($row = mysqli_fetch_array($result)) {
                 } ?>
             </div>
             <div class="form-group">
-                <label for="website">Website URL:</label>
+                <label class="required" for="website">Website URL:</label>
                 <input type="text" name="website" class="form-control" value="<?php if ($webURL) {
                                                                                     echo $webURL;
                                                                                 } ?>">
@@ -222,7 +222,7 @@ while ($row = mysqli_fetch_array($result)) {
                 } ?>
             </div>
             <div class="form-group">
-                <label for="phone">Phone Number:</label>
+                <label class="required" for="phone">Phone Number:</label>
                 <input type="text" name="phone" class="form-control" value="<?php if ($phone) {
                                                                                 echo $phone;
                                                                             } ?>">
