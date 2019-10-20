@@ -16,12 +16,13 @@ $contact_id = $_GET['id']; // page-setter variable
 if (!isset($contact_id)) {
     $result = mysqli_query($con, "SELECT cid FROM npe_contacts LIMIT 1") or die(mysqli_error($con));
     while ($row = mysqli_fetch_array($result)) {
-
         $contact_id = $row['id'];
     }
 }
 // echo "<h1>$char_id</h1>";
+?>
 
+<?php
 // Step 3: If the user clicks submit, validate
 if (isset($_POST['submit'])) {
     // DECLARE VARIABLES
@@ -147,7 +148,11 @@ while ($row = mysqli_fetch_array($result)) {
     $description = $row['npe_description'];
     $id = $row['cid'];
 
-    $editLinks .= "\n<hr><a id=\"style-links\" href=\"edit.php?id=$id\"><div class=\"row pl-2\"><div class=\"col-sm\">$busName</div></div></a>";
+    if ($contact_id == $id) {
+        $editLinks .= "\n<hr><strong><a style=\"color:blue;\" id=\"style-links\" href=\"edit.php?id=$id\"><div class=\"row pl-2\"><div class=\"col-sm\">$busName</div></div></a></strong>";
+    } else {
+        $editLinks .= "\n<hr><a id=\"style-links\" href=\"edit.php?id=$id\"><div class=\"row pl-2\"><div class=\"col-sm\">$busName</div></div></a>";
+    }
 }
 
 // Step 2: Prepopulate the fields based on the selected character
