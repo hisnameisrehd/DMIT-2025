@@ -175,7 +175,7 @@ if (isset($_POST['submit'])) {
 ?>
 
 <div class="jumbotron clearfix">
-    <h1>Insert</h1>
+	<h1>Insert</h1>
 </div>
 
 <form id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
@@ -238,56 +238,26 @@ if (isset($_POST['submit'])) {
 	</div>
 	<div class="form-group">
 		<label for="city">City:</label>
-		<input type="text" name="city" class="form-control" value="<?php if ($city) {
-																		echo $city;
-																	} ?>">
-		<?php if ($valCityMsg) {
-			echo $msgPreError . $valCityMsg . $msgPost;
-		} ?>
+		<input type="text" name="city" class="form-control" value="<?php if ($city) : ?><?php echo $city; ?><?php endif; ?>">
+		<?php if ($valCityMsg) : ?><?php echo $msgPreError . $valCityMsg . $msgPost; ?><?php endif; ?>
 	</div>
 	<div class="form-group">
 		<label for="province">Province:</label>
 		<select class="form-control" name="province">
 			<option value="">Please Select A Province</option>
-			<option value="AB" <?php if (isset($province) && ($province == "AB")) {
-									echo "selected";
-								} ?>>Alberta</option>
-			<option value="BC" <?php if (isset($province) && ($province == "BC")) {
-									echo "selected";
-								} ?>>British Columbia</option>
-			<option value="MB" <?php if (isset($province) && ($province == "MB")) {
-									echo "selected";
-								} ?>>Manitoba</option>
-			<option value="NB" <?php if (isset($province) && ($province == "NB")) {
-									echo "selected";
-								} ?>>New Brunswick</option>
-			<option value="NL" <?php if (isset($province) && ($province == "NL")) {
-									echo "selected";
-								} ?>>Newfoundland and Labrador</option>
-			<option value="NS" <?php if (isset($province) && ($province == "NS")) {
-									echo "selected";
-								} ?>>Nova Scotia</option>
-			<option value="ON" <?php if (isset($province) && ($province == "ON")) {
-									echo "selected";
-								} ?>>Ontario</option>
-			<option value="PE" <?php if (isset($province) && ($province == "PE")) {
-									echo "selected";
-								} ?>>Prince Edward Island</option>
-			<option value="QC" <?php if (isset($province) && ($province == "QC")) {
-									echo "selected";
-								} ?>>Quebec</option>
-			<option value="SK" <?php if (isset($province) && ($province == "SK")) {
-									echo "selected";
-								} ?>>Saskatchewan</option>
-			<option value="NT" <?php if (isset($province) && ($province == "NT")) {
-									echo "selected";
-								} ?>>Northwest Territories</option>
-			<option value="NU" <?php if (isset($province) && ($province == "NU")) {
-									echo "selected";
-								} ?>>Nunavut</option>
-			<option value="YT" <?php if (isset($province) && ($province == "YT")) {
-									echo "selected";
-								} ?>>Yukon</option>
+			<option value="AB" <?php if (isset($province) && ($province == "AB")) : ?> selected <?php endif; ?>>Alberta</option>
+			<option value="BC" <?php if (isset($province) && ($province == "BC")) : ?> selected <?php endif; ?>>British Columbia</option>
+			<option value="MB" <?php if (isset($province) && ($province == "MB")) : ?> selected <?php endif; ?>>Manitoba</option>
+			<option value="NB" <?php if (isset($province) && ($province == "NB")) : ?> selected <?php endif; ?>>New Brunswick</option>
+			<option value="NL" <?php if (isset($province) && ($province == "NL")) : ?> selected <?php endif; ?>>Newfoundland and Labrador</option>
+			<option value="NS" <?php if (isset($province) && ($province == "NS")) : ?> selected <?php endif; ?>>Nova Scotia</option>
+			<option value="ON" <?php if (isset($province) && ($province == "ON")) : ?> selected <?php endif; ?>>Ontario</option>
+			<option value="PE" <?php if (isset($province) && ($province == "PE")) : ?> selected <?php endif; ?>>Prince Edward Island</option>
+			<option value="QC" <?php if (isset($province) && ($province == "QC")) : ?> selected <?php endif; ?>>Quebec</option>
+			<option value="SK" <?php if (isset($province) && ($province == "SK")) : ?> selected <?php endif; ?>>Saskatchewan</option>
+			<option value="NT" <?php if (isset($province) && ($province == "NT")) : ?> selected <?php endif; ?>>Northwest Territories</option>
+			<option value="NU" <?php if (isset($province) && ($province == "NU")) : ?> selected <?php endif; ?>>Nunavut</option>
+			<option value="YT" <?php if (isset($province) && ($province == "YT")) : ?> selected <?php endif; ?>>Yukon</option>
 		</select>
 		<?php if ($valProvinceMsg) {
 			echo $msgPreError . $valProvinceMsg . $msgPost;
