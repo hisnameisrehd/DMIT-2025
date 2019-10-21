@@ -7,7 +7,7 @@ $id = $_GET['id'];
 ?>
 
 <div class="jumbotron clearfix">
-  <h1><?php echo APP_NAME ?></h1>
+  <h1>Details</h1>
 </div>
 
 <?php

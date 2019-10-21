@@ -14,7 +14,10 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
-<h1>Search</h1>
+<div class="jumbotron clearfix">
+    <h1>Search</h1>
+</div>
+
 <!-- Search form -->
 <form id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
     <div class="form-group">
@@ -70,24 +73,32 @@ if (isset($_POST['submit'])) {
             <div class="alert alert-success" role="alert">Success! Showing results for <?php echo $searchterm; ?></div>
 
             <?php while ($row = mysqli_fetch_array($result)) : ?>
-                <a class="search-link" href="companyprofile.php?id=<?php echo $row['cid']; ?>">
-                    <hr />
-                    <div class="d-inline-block">
-                        <p>
-                            <span class="search-link-header"><?php echo $row['npe_business_name']; ?></span>
-                            <br />
-                            <?php if ($row['npe_description'] != "") : ?>
-                                <?php echo $row['npe_description']; ?>
-                            <?php endif; ?>
-                            <?php if ($row['npe_person_name'] != "") : ?>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-9">
+                                <h3>
+                                    <span class="field-content"><a href="companyprofile.php?id=<?php echo $row['cid']; ?>"><?php echo $row['npe_business_name']; ?></a></span>
+                                </h3>
+                                <p><?php echo $row['npe_description']; ?></p>
+                            </div>
+                            <div class="col-3 pt-3">
+                                <a href="companyprofile.php?id=<?php echo $row['cid']; ?>">
+                                    Profile Details
+                                </a>
                                 <br />
-                                <b>Contact:</b> <?php echo $row['npe_person_name']; ?>
-                            <?php endif; ?>
-                            <br />
-                            <i>Phone: <?php echo $row['npe_phone'] ?></i>
-                        </p>
+                                <a href="<?php echo $row['npe_url']; ?>" target="_blank">
+                                    Visit Website
+                                </a>
+                                <?php if ($row['npe_email'] != "") : ?>
+                                    <br />
+                                    <i><a href="mailto:<?php echo $row['npe_email']; ?>">Contact</a></i>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                     </div>
-                </a>
+                </div>
             <?php endwhile; ?>
             <!-- end mysqli_fetch_array() -->
         <?php else : ?>

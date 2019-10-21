@@ -176,7 +176,10 @@ while ($row = mysqli_fetch_array($result)) {
 
 ?>
 
-<h2>Edit</h2>
+<div class="jumbotron clearfix">
+    <h1>Edit</h1>
+</div>
+
 <div class="row">
     <div class="col">
         <!-- left column -->

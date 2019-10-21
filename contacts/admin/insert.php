@@ -174,7 +174,10 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
-<h2>Insert</h2>
+<div class="jumbotron clearfix">
+    <h1>Insert</h1>
+</div>
+
 <form id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
 	<?php if ($valid == 1) {
 		echo $msgPreSuccess . $msgSuccess . $msgPost;

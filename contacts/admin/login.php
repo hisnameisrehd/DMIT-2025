@@ -32,7 +32,10 @@ include("../includes/header.php");
 
 ?>
 
-<h1>Login</h1>
+<div class="jumbotron clearfix">
+	<h1>Login</h1>
+</div>
+
 <form id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
 	<div class="form-group">
 		<label for="username">Username:</label>
