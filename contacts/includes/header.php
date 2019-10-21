@@ -41,8 +41,53 @@ include("mysql_connect.php"); // here we include the connection script; since th
 
 <body>
 
+  <style>
+    form label.required::before {
+      color: red;
+      content: "* ";
+      margin-left: -11px;
+    }
 
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 fixed-top">
+    form {
+      max-width: 100%;
+    }
+
+    html,
+    body {
+      background: lightgoldenrodyellow;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    .jumbotron {
+      border: 2px solid black;
+    }
+
+    #custom-nav-style {
+      border-bottom: 2px solid black;
+    }
+
+    #custom-nav-style,
+    #custom-nav-style a {
+      background: #ffd900;
+      color: #703600;
+      font-weight: 700;
+    }
+
+    .edit-link {
+      font-size: 1.4rem;
+      border-top: 1px solid gray;
+      border-bottom: 1px solid gray;
+    }
+
+    .active-edit-link {
+      background: lightgray;
+    }
+  </style>
+
+  <nav class="navbar navbar-expand-md navbar-dark mb-4 fixed-top" id="custom-nav-style">
     <a class="navbar-brand" href="<?php echo BASE_URL ?>index.php"><i class="material-icons" style="font-size:36px">home</i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -60,9 +105,6 @@ include("mysql_connect.php"); // here we include the connection script; since th
             <a class="dropdown-item" href="<?php echo BASE_URL ?>admin/insert.php">Insert</a>
             <a class="dropdown-item" href="<?php echo BASE_URL ?>admin/edit.php">Edit</a>
             <!-- <a class="dropdown-item" href="<?php echo BASE_URL ?>#">Link</a> -->
-
-
-
           </div>
         </li>
       </ul>
@@ -87,10 +129,3 @@ include("mysql_connect.php"); // here we include the connection script; since th
   </nav>
 
   <main role="main" class="container">
-    <style>
-      form label.required::before {
-        color: red;
-        content: "* ";
-        margin-left: -11px;
-      }
-    </style>

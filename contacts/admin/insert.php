@@ -178,122 +178,142 @@ if (isset($_POST['submit'])) {
 	<h1>Insert</h1>
 </div>
 
-<form id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-	<?php if ($valid == 1) {
-		echo $msgPreSuccess . $msgSuccess . $msgPost;
-	} ?>
-	<div class="form-group">
-		<label class="required" for="busname">Business Name:</label>
-		<input type="text" name="busname" class="form-control" value="<?php if ($busName) {
-																			echo $busName;
-																		} ?>">
-		<?php if ($valBusNameMsg) {
-			echo $msgPreError . $valBusNameMsg . $msgPost;
-		} ?>
-	</div>
-	<div class="form-group">
-		<label for="contactname">Contact Name:</label>
-		<input type="text" name="contactname" class="form-control" value="<?php if ($contactName) {
-																				echo $contactName;
+<?php if ($valid == 1) {
+	echo $msgPreSuccess . $msgSuccess . $msgPost;
+} ?>
+
+<div class="row">
+	<div class="col-6">
+		<!-- left column -->
+		<!-- 
+            $_SERVER['PHP_SELF'] means goto the current file
+                - does not retain info
+            $_SERVER['REQUEST_URI'] is also same page. 
+                - does retain info
+        -->
+		<form id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
+			<div class="form-group">
+				<label class="required" for="busname">Business Name:</label>
+				<input type="text" name="busname" class="form-control" value="<?php if ($busName) {
+																					echo $busName;
+																				} ?>">
+				<?php if ($valBusNameMsg) {
+					echo $msgPreError . $valBusNameMsg . $msgPost;
+				} ?>
+			</div>
+			<div class="form-group">
+				<label for="contactname">Contact Name:</label>
+				<input type="text" name="contactname" class="form-control" value="<?php if ($contactName) {
+																						echo $contactName;
+																					} ?>">
+				<?php if ($valContactNameMsg) {
+					echo $msgPreError . $valContactNameMsg . $msgPost;
+				} ?>
+			</div>
+			<div class="form-group">
+				<label class="required" for="email">Email:</label>
+				<input type="text" name="email" class="form-control" value="<?php if ($email) {
+																				echo $email;
 																			} ?>">
-		<?php if ($valContactNameMsg) {
-			echo $msgPreError . $valContactNameMsg . $msgPost;
-		} ?>
-	</div>
-	<div class="form-group">
-		<label class="required" for="email">Email:</label>
-		<input type="text" name="email" class="form-control" value="<?php if ($email) {
-																		echo $email;
-																	} ?>">
-		<?php if ($valEmailMsg) {
-			echo $msgPreError . $valEmailMsg . $msgPost;
-		} ?>
-	</div>
-	<div class="form-group">
-		<label class="required" for="website">Website URL:</label>
-		<input type="text" name="website" class="form-control" value="<?php if ($webURL) {
-																			echo $webURL;
+				<?php if ($valEmailMsg) {
+					echo $msgPreError . $valEmailMsg . $msgPost;
+				} ?>
+			</div>
+			<div class="form-group">
+				<label class="required" for="website">Website URL:</label>
+				<input type="text" name="website" class="form-control" value="<?php if ($webURL) {
+																					echo $webURL;
+																				} ?>">
+				<?php if ($valURLMsg) {
+					echo $msgPreError . $valURLMsg . $msgPost;
+				} ?>
+			</div>
+			<div class="form-group">
+				<label class="required" for="phone">Phone Number:</label>
+				<input type="text" name="phone" class="form-control" value="<?php if ($phone) {
+																				echo $phone;
+																			} ?>">
+				<?php if ($valPhoneMsg) {
+					echo $msgPreError . $valPhoneMsg . $msgPost;
+				} ?>
+			</div>
+			<div class="form-check">
+				<label class="form-check-label">
+					<input name="resume" type="checkbox" class="form-check-input" value="1" <?php if ($resume) {
+																								echo "checked";
+																							} ?>>Send Résumé
+				</label>
+			</div>
+			<br />
+			<div class="form-group">
+				<label for="submit">&nbsp;</label>
+				<input type="submit" name="submit" class="btn btn-info" value="Submit">
+			</div>
+	</div> <!-- \\ left column -->
+	<div class="col-6">
+		<!-- right column -->
+		<div class="form-group">
+			<label for="address">Address:</label>
+			<input type="text" name="address" class="form-control" value="<?php if ($address) {
+																				echo $address;
+																			} ?>">
+			<?php if ($valAddressMsg) {
+				echo $msgPreError . $valAddressMsg . $msgPost;
+			} ?>
+		</div>
+		<div class="form-group">
+			<label for="city">City:</label>
+			<input type="text" name="city" class="form-control" value="<?php if ($city) {
+																			echo $city;
 																		} ?>">
-		<?php if ($valURLMsg) {
-			echo $msgPreError . $valURLMsg . $msgPost;
-		} ?>
-	</div>
-	<div class="form-group">
-		<label class="required" for="phone">Phone Number:</label>
-		<input type="text" name="phone" class="form-control" value="<?php if ($phone) {
-																		echo $phone;
-																	} ?>">
-		<?php if ($valPhoneMsg) {
-			echo $msgPreError . $valPhoneMsg . $msgPost;
-		} ?>
-	</div>
-	<div class="form-group">
-		<label for="address">Address:</label>
-		<input type="text" name="address" class="form-control" value="<?php if ($address) {
-																			echo $address;
-																		} ?>">
-		<?php if ($valAddressMsg) {
-			echo $msgPreError . $valAddressMsg . $msgPost;
-		} ?>
-	</div>
-	<div class="form-group">
-		<label for="city">City:</label>
-		<input type="text" name="city" class="form-control" value="<?php if ($city) : ?><?php echo $city; ?><?php endif; ?>">
-		<?php if ($valCityMsg) : ?><?php echo $msgPreError . $valCityMsg . $msgPost; ?><?php endif; ?>
-	</div>
-	<div class="form-group">
-		<label for="province">Province:</label>
-		<select class="form-control" name="province">
-			<option value="">Please Select A Province</option>
-			<option value="AB" <?php if (isset($province) && ($province == "AB")) : ?> selected <?php endif; ?>>Alberta</option>
-			<option value="BC" <?php if (isset($province) && ($province == "BC")) : ?> selected <?php endif; ?>>British Columbia</option>
-			<option value="MB" <?php if (isset($province) && ($province == "MB")) : ?> selected <?php endif; ?>>Manitoba</option>
-			<option value="NB" <?php if (isset($province) && ($province == "NB")) : ?> selected <?php endif; ?>>New Brunswick</option>
-			<option value="NL" <?php if (isset($province) && ($province == "NL")) : ?> selected <?php endif; ?>>Newfoundland and Labrador</option>
-			<option value="NS" <?php if (isset($province) && ($province == "NS")) : ?> selected <?php endif; ?>>Nova Scotia</option>
-			<option value="ON" <?php if (isset($province) && ($province == "ON")) : ?> selected <?php endif; ?>>Ontario</option>
-			<option value="PE" <?php if (isset($province) && ($province == "PE")) : ?> selected <?php endif; ?>>Prince Edward Island</option>
-			<option value="QC" <?php if (isset($province) && ($province == "QC")) : ?> selected <?php endif; ?>>Quebec</option>
-			<option value="SK" <?php if (isset($province) && ($province == "SK")) : ?> selected <?php endif; ?>>Saskatchewan</option>
-			<option value="NT" <?php if (isset($province) && ($province == "NT")) : ?> selected <?php endif; ?>>Northwest Territories</option>
-			<option value="NU" <?php if (isset($province) && ($province == "NU")) : ?> selected <?php endif; ?>>Nunavut</option>
-			<option value="YT" <?php if (isset($province) && ($province == "YT")) : ?> selected <?php endif; ?>>Yukon</option>
-		</select>
-		<?php if ($valProvinceMsg) {
-			echo $msgPreError . $valProvinceMsg . $msgPost;
-		} ?>
-	</div>
-	<div class="form-group">
-		<label for="postal">Postal Code:</label>
-		<input type="text" name="postal" class="form-control" value="<?php if ($postal) {
-																			echo $postal;
-																		} ?>">
-		<?php if ($valPostalMsg) {
-			echo $msgPreError . $valPostalMsg . $msgPost;
-		} ?>
-	</div>
-	<div class="form-group">
-		<label for="description">Description:</label>
-		<textarea name="description" class="form-control"><?php if ($description) {
-																echo $description;
-															} ?></textarea>
-		<?php if ($valDescMsg) {
-			echo $msgPreError . $valDescMsg . $msgPost;
-		} ?>
-	</div>
-	<div class="form-check">
-		<label class="form-check-label">
-			<input name="resume" type="checkbox" class="form-check-input" value="1" <?php if ($resume) {
-																						echo "checked";
-																					} ?>>Send Résumé
-		</label>
-	</div>
-	<br />
-	<div class="form-group">
-		<label for="submit">&nbsp;</label>
-		<input type="submit" name="submit" class="btn btn-info" value="Submit">
-	</div>
-</form>
+			<?php if ($valCityMsg) {
+				echo $msgPreError . $valCityMsg . $msgPost;
+			} ?>
+		</div>
+		<div class="form-group">
+			<label for="province">Province:</label>
+			<select class="form-control" name="province">
+				<option value="">Please Select A Province</option>
+				<option value="AB" <?php if (isset($province) && ($province == "AB")) : ?> selected <?php endif; ?>>Alberta</option>
+				<option value="BC" <?php if (isset($province) && ($province == "BC")) : ?> selected <?php endif; ?>>British Columbia</option>
+				<option value="MB" <?php if (isset($province) && ($province == "MB")) : ?> selected <?php endif; ?>>Manitoba</option>
+				<option value="NB" <?php if (isset($province) && ($province == "NB")) : ?> selected <?php endif; ?>>New Brunswick</option>
+				<option value="NL" <?php if (isset($province) && ($province == "NL")) : ?> selected <?php endif; ?>>Newfoundland and Labrador</option>
+				<option value="NS" <?php if (isset($province) && ($province == "NS")) : ?> selected <?php endif; ?>>Nova Scotia</option>
+				<option value="ON" <?php if (isset($province) && ($province == "ON")) : ?> selected <?php endif; ?>>Ontario</option>
+				<option value="PE" <?php if (isset($province) && ($province == "PE")) : ?> selected <?php endif; ?>>Prince Edward Island</option>
+				<option value="QC" <?php if (isset($province) && ($province == "QC")) : ?> selected <?php endif; ?>>Quebec</option>
+				<option value="SK" <?php if (isset($province) && ($province == "SK")) : ?> selected <?php endif; ?>>Saskatchewan</option>
+				<option value="NT" <?php if (isset($province) && ($province == "NT")) : ?> selected <?php endif; ?>>Northwest Territories</option>
+				<option value="NU" <?php if (isset($province) && ($province == "NU")) : ?> selected <?php endif; ?>>Nunavut</option>
+				<option value="YT" <?php if (isset($province) && ($province == "YT")) : ?> selected <?php endif; ?>>Yukon</option>
+			</select>
+			<?php if ($valProvinceMsg) {
+				echo $msgPreError . $valProvinceMsg . $msgPost;
+			} ?>
+		</div>
+		<div class="form-group">
+			<label for="postal">Postal Code:</label>
+			<input type="text" name="postal" class="form-control" value="<?php if ($postal) {
+																				echo $postal;
+																			} ?>">
+			<?php if ($valPostalMsg) {
+				echo $msgPreError . $valPostalMsg . $msgPost;
+			} ?>
+		</div>
+		<div class="form-group">
+			<label for="description">Description:</label>
+			<textarea name="description" class="form-control"><?php if ($description) {
+																	echo $description;
+																} ?></textarea>
+			<?php if ($valDescMsg) {
+				echo $msgPreError . $valDescMsg . $msgPost;
+			} ?>
+		</div>
+
+		</form>
+	</div> <!-- \\ right column -->
+</div>
 
 <?php
 include("../includes/footer.php");

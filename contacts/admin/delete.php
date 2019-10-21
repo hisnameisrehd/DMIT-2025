@@ -22,4 +22,3 @@
     
         header("Location: edit.php");
     }
-?>

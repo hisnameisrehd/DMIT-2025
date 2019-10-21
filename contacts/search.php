@@ -37,12 +37,6 @@ if (isset($_POST['submit'])) {
     </div>
 </form>
 
-<style>
-    ul {
-        list-style-type: none;
-    }
-</style>
-
 <?php if (isset($_POST['submit'])) : ?>
     <?php $searchterm = trim($_POST['searchterm']); ?>
     <?php

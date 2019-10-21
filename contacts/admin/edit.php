@@ -149,9 +149,9 @@ while ($row = mysqli_fetch_array($result)) {
     $id = $row['cid'];
 
     if ($contact_id == $id) {
-        $editLinks .= "\n<hr><strong><a style=\"color:blue;\" id=\"style-links\" href=\"edit.php?id=$id\"><div class=\"row pl-2\"><div class=\"col-sm\">$busName</div></div></a></strong>";
+        $editLinks .= "\n<li class=\"edit-link active-edit-link\"><strong><a style=\"color:blue;\" id=\"style-links\" href=\"edit.php?id=$id\"><div class=\"row pl-2\"><div class=\"col-sm\">$busName</div></div></a></strong></li>";
     } else {
-        $editLinks .= "\n<hr><a id=\"style-links\" href=\"edit.php?id=$id\"><div class=\"row pl-2\"><div class=\"col-sm\">$busName</div></div></a>";
+        $editLinks .= "\n<li class=\"edit-link\"><a id=\"style-links\" href=\"edit.php?id=$id\"><div class=\"row pl-2\"><div class=\"col-sm\">$busName</div></div></a></li>";
     }
 }
 
@@ -323,7 +323,9 @@ while ($row = mysqli_fetch_array($result)) {
     <div class="col">
         <!-- right column -->
         <div class="navlinks">
-            <?php echo $editLinks; ?>
+            <ul>
+                <?php echo $editLinks; ?>
+            </ul>
         </div>
     </div> <!-- \\ right column -->
 </div>
