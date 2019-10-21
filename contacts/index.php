@@ -12,6 +12,11 @@ include("includes/header.php");
 $result = mysqli_query($con, "SELECT * FROM npe_contacts");
 ?>
 
+
+<!-- https://www.sitepoint.com/community/t/scraping-images-from-a-website/3468/4 -->
+
+
+
 <?php while ($row = mysqli_fetch_array($result)) : ?>
   <hr>
   <div class="row">
