@@ -132,7 +132,7 @@ if (isset($_POST['submit'])) {
 
 // Step 1: Create a list characters which the user can select from
 // Reading from a DB: SELECT
-$result = mysqli_query($con, "SELECT * FROM npe_contacts") or die(mysqli_error($con));
+$result = mysqli_query($con, "SELECT * FROM npe_contacts ORDER BY npe_business_name ASC") or die(mysqli_error($con));
 // loop trhough results
 while ($row = mysqli_fetch_array($result)) {
     $busName = $row['npe_business_name'];

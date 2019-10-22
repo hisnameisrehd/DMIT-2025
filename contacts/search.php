@@ -45,7 +45,8 @@ if (isset($_POST['submit'])) {
             $sql = "SELECT * FROM npe_contacts WHERE
     npe_business_name LIKE '$searchterm'
     OR npe_person_name LIKE '$searchterm'
-    OR npe_description LIKE '%$searchterm%'";
+    OR npe_description LIKE '%$searchterm%'
+    ORDER BY npe_business_name ASC";
 
             $result = mysqli_query($con, $sql) or die(mysqli_error($con));
         }

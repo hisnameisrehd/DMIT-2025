@@ -9,7 +9,7 @@ include("includes/header.php");
 </div>
 
 <?php
-$result = mysqli_query($con, "SELECT * FROM npe_contacts");
+$result = mysqli_query($con, "SELECT * FROM npe_contacts ORDER BY npe_business_name ASC");
 ?>
 
 
