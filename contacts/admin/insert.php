@@ -82,7 +82,7 @@ if (isset($_POST['submit'])) {
 	// Website URL
 	if (!filter_var($webURL, FILTER_VALIDATE_URL)) {
 		$valid = 0;
-		$valURLMsg = "You enter a valid URL like \"https://www.w3schools.com\".";
+		$valURLMsg = "You must enter a valid URL like \"https://www.w3schools.com\".";
 	}
 	// Phone number
 	$phoneNotValid = phoneVal($phone);
