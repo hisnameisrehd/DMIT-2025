@@ -29,4 +29,4 @@ if (mysqli_connect_errno()) {
 
 
   // Your App Name
-  define("APP_NAME", "Mysql Blog");
+  define("APP_NAME", "MySQL Blog");

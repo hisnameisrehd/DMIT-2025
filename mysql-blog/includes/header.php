@@ -37,12 +37,33 @@ include("mysql_connect.php"); // here we include the connection script; since th
   <!-- Themes from https://bootswatch.com/ : Use the Themes dropdown to select a theme you like; copy/paste the bootstrap.css. Here, we have named the downloaded theme as a new file and can overwrite the default.  -->
   <!-- <link href="<?php echo BASE_URL ?>css/bootstrap-lumen.css" rel="stylesheet"> -->
 
+  <script type="text/javascript">
+    function emoticon(text) {
+      var txtarea = document.myform.message;
+      text = ' ' + text + ' ';
+      if (txtarea.createTextRange && txtarea.caretPos) {
+        var caretPos = txtarea.caretPos;
+        caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ? text + ' ' : text;
+        txtarea.focus();
+      } else {
+        txtarea.value += text;
+        txtarea.focus();
+      }
+    }
+  </script>
 </head>
 
 <body>
   <style>
-    ul {
+    .blogposts {
       list-style-type: none;
+    }
+    .blogpost {
+      border: 1px solid black;
+      box-shadow: 0 0 5px 0 gray;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+      padding: .5rem 1rem;
     }
   </style>
 

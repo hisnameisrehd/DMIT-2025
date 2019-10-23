@@ -69,7 +69,27 @@ if (isset($_POST['submit'])) {
 			</div>
 		<?php endif; ?>
 	</div>
+	<div>
+		<!-- emoticon select -->
+		<a href="javascript:emoticon(':D')">
+			<img src="../emoticons/icon_biggrin.gif" alt="">
+		</a>
+		<a href="javascript:emoticon('8)')">
+			<img src="../emoticons/icon_cool.gif" alt="">
+		</a>
+		<a href="javascript:emoticon(':(')">
+			<img src="../emoticons/icon_sad.gif" alt="">
+		</a>
+		<a href="javascript:emoticon(':P')">
+			<img src="../emoticons/icon_razz.gif" alt="">
+		</a>
+		<a href="javascript:emoticon(';)')">
+			<img src="../emoticons/icon_wink.gif" alt="">
+		</a>
+	</div>
+
 	<div class="form-group">
+		<br />
 		<label for="submit">&nbsp;</label>
 		<input type="submit" name="submit" class="btn btn-info" value="Submit">
 	</div>
