@@ -56,9 +56,13 @@ include("mysql_connect.php"); // here we include the connection script; since th
 <body>
   <style>
     .blogposts {
+      margin: 0 auto;
+      padding: 0;
       list-style-type: none;
     }
     .blogpost {
+      margin: 0 auto;
+      padding: 0;
       border: 1px solid black;
       box-shadow: 0 0 5px 0 gray;
       border-radius: 5px;
