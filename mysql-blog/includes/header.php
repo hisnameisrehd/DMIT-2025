@@ -60,6 +60,7 @@ include("mysql_connect.php"); // here we include the connection script; since th
       padding: 0;
       list-style-type: none;
     }
+
     .blogpost {
       margin: 0 auto;
       padding: 0;
@@ -69,6 +70,44 @@ include("mysql_connect.php"); // here we include the connection script; since th
       margin-bottom: 1rem;
       padding: .5rem 1rem;
     }
+
+    .date-div {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+  }
+
+  .fancy-date {
+    background-color: #998877;
+    float: right;
+    margin-left: 10px;
+    padding: 45px 18px 0;
+    position: relative;
+  }
+
+  .fancy-date .day {
+    font-size: 45px;
+    left: 5px;
+    line-height: 45px;
+    position: absolute;
+    top: 0;
+  }
+
+  .fancy-date .month {
+    font-size: 25px;
+    text-transform: uppercase;
+  }
+
+  .fancy-date .year {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    display: block;
+    position: absolute;
+    right: -10px;
+    top: 15px;
+    letter-spacing: 0.2rem;
+  }
   </style>
 
   <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 fixed-top">
