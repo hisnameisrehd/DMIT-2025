@@ -75,11 +75,10 @@ include("mysql_connect.php"); // here we include the connection script; since th
     display: flex;
     justify-content: center;
     align-self: center;
+    background-color: #f5eceb;
   }
 
   .fancy-date {
-    background-color: #998877;
-    float: right;
     margin-left: 10px;
     padding: 45px 18px 0;
     position: relative;

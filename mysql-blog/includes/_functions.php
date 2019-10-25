@@ -33,12 +33,15 @@ function makeClickableLinks($text)
  } // end makeClickableLinks
 
   
-// this is JS
-function go()
-{
-  box = document.forms[0].entryselect;
-  destination = box.options[box.selectedIndex].value;
-  if (destination) location.href = destination;
-}
-// <select name="entryselect" class="form-control" onchange="go()">
-?>
+ ?>
+
+ <script>
+ // this is JS
+ function go()
+ {
+   box = document.forms[0].entryselect;
+   destination = box.options[box.selectedIndex].value;
+   if (destination) location.href = destination;
+ }
+ // <select name="entryselect" class="form-control" onchange="go()">
+ </script>
