@@ -45,7 +45,7 @@ function mysqli_result($res, $row, $field = 0)
 $result = mysqli_query($con, "SELECT * FROM npe_blog ORDER BY bid DESC $limstring");
 ?>
 
-<ul class="blogposts">
+<ul class="blogposts constrain-content">
   <?php while ($row = mysqli_fetch_array($result)) : ?>
     <?php
       // echo $row['npe_timedate'];
@@ -61,7 +61,7 @@ $result = mysqli_query($con, "SELECT * FROM npe_blog ORDER BY bid DESC $limstrin
       <div class="row">
         <div class="col-12">
           <div class="row">
-            <div class="col-3 pt-3 date-div">
+            <div class="col-2 pt-3 date-div">
               <p>
                 <div class="fancy-date">
                   <span class="day"><?php echo $day; ?></span>
@@ -70,7 +70,7 @@ $result = mysqli_query($con, "SELECT * FROM npe_blog ORDER BY bid DESC $limstrin
                 </div>
               </p>
             </div>
-            <div class="col-9">
+            <div class="col-10 message-box">
               <h3>
                 <h4><?php echo $row['cid']; ?><?php echo $row['npe_title']; ?></h4>
               </h3>
@@ -79,6 +79,7 @@ $result = mysqli_query($con, "SELECT * FROM npe_blog ORDER BY bid DESC $limstrin
           </div>
         </div>
       </div>
+      <span class="d-block" style="text-align:right;font-size:.7rem;"><?php echo $row['npe_timedate']; ?></span>
     </li>
   <?php endwhile; ?>
   <!-- end mysqli_fetch_array() -->

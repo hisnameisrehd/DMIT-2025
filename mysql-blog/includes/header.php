@@ -55,58 +55,70 @@ include("mysql_connect.php"); // here we include the connection script; since th
 
 <body>
   <style>
+ 
+    .constrain-content {
+      max-width: 950px;
+    }
+
     .blogposts {
       margin: 0 auto;
       padding: 0;
       list-style-type: none;
+
     }
 
     .blogpost {
+      background-color: #f5eceb;
       margin: 0 auto;
       padding: 0;
       border: 1px solid black;
       box-shadow: 0 0 5px 0 gray;
       border-radius: 5px;
       margin-bottom: 1rem;
-      padding: .5rem 1rem;
+      padding-top: .9rem;
+      padding-right: 2rem;
     }
 
     .date-div {
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    background-color: #f5eceb;
-  }
+      display: flex;
+      justify-content: center;
+      align-self: center;
+    }
 
-  .fancy-date {
-    margin-left: 10px;
-    padding: 45px 18px 0;
-    position: relative;
-  }
+    .fancy-date {
+      margin-left: 10px;
+      padding: 45px 18px 0;
+      position: relative;
+    }
 
-  .fancy-date .day {
-    font-size: 45px;
-    left: 5px;
-    line-height: 45px;
-    position: absolute;
-    top: 0;
-  }
+    .fancy-date .day {
+      font-size: 45px;
+      left: 5px;
+      line-height: 45px;
+      position: absolute;
+      top: 0;
+    }
 
-  .fancy-date .month {
-    font-size: 25px;
-    text-transform: uppercase;
-  }
+    .fancy-date .month {
+      font-size: 25px;
+      text-transform: uppercase;
+    }
 
-  .fancy-date .year {
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-    display: block;
-    position: absolute;
-    right: -10px;
-    top: 15px;
-    letter-spacing: 0.2rem;
-  }
+    .fancy-date .year {
+      -webkit-transform: rotate(-90deg);
+      -moz-transform: rotate(-90deg);
+      filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+      display: block;
+      position: absolute;
+      right: -10px;
+      top: 15px;
+      letter-spacing: 0.2rem;
+    }
+
+    .message-box {
+      background: #ffffff;
+      border-radius: 5px;
+    }
   </style>
 
   <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 fixed-top">
