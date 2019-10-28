@@ -11,15 +11,13 @@ include("../includes/header.php");
 ?>
 
 <?php
-$blog_id = $_GET['id']; // page-setter variable
 //if not set we will give this a default value
+$blog_id = $_GET['blogs'];
+echo $blog_id;
 if (!isset($blog_id)) {
-    $blog_id = $_GET['blogs'];
-    if (!isset($blog_id)) {
-        $result = mysqli_query($con, "SELECT bid FROM npe_blog ORDER BY bid DESC LIMIT 1 ") or die(mysqli_error($con));
-        while ($row = mysqli_fetch_array($result)) {
-            $blog_id = $row['bid'];
-        }
+    $result = mysqli_query($con, "SELECT bid FROM npe_blog ORDER BY bid DESC LIMIT 1 ") or die(mysqli_error($con));
+    while ($row = mysqli_fetch_array($result)) {
+        $blog_id = $row['bid'];
     }
 }
 // echo "<h1>$blog_id</h1>";
@@ -50,17 +48,17 @@ if (!isset($blog_id)) {
     // If our boolean is still 1 then user form data is good.
     if ($valid == 1) {
         $msgSuccess = "Success! The form data has been stored.";
+        $title = trim($_POST['title']);
+        $message = trim($_POST['message']);
+        // Editing or changing data in a DB: UPDATE
         mysqli_query(
             $con,
-            "INSERT INTO npe_blog(
-				npe_title, 
-				npe_message) 
-			VALUES('$title', 
-				'$message')"
+            "UPDATE npe_blog 
+            SET
+				npe_title = '$title',
+				npe_message = '$message' 
+        WHERE bid = '$blog_id'"
         ) or die(mysqli_error($con));
-        // RESET
-        $title = "";
-        $message = "";
     }
 }
 
@@ -93,8 +91,8 @@ while ($row = mysqli_fetch_array($result)) {
                 $oMessage = $row['npe_message'];
                 $oId = $row['bid'];
 
-                if($blog_id == $oId){
-                array_push($editLinks, "\n<option name=\"postitem\" value=\"$oId\" selected=selected>$oTitle</option>");
+                if ($blog_id == $oId) {
+                    array_push($editLinks, "\n<option name=\"postitem\" value=\"$oId\" selected=selected>$oTitle</option>");
                 } else {
                     array_push($editLinks, "\n<option name=\"postitem\" value=\"$oId\">$oTitle</option>");
                 }
@@ -104,9 +102,6 @@ while ($row = mysqli_fetch_array($result)) {
             }
             ?>
         </select>
-        <?php if ($valBlogEntry) {
-            echo $msgPreError . $valBlogEntry . $msgPost;
-        } ?>
     </div>
 </form>
 
@@ -115,7 +110,7 @@ while ($row = mysqli_fetch_array($result)) {
 
 
 
-<form id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+<form id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
 
     <div class="form-group">
         <label for="title">Title:</label>
@@ -162,6 +157,16 @@ while ($row = mysqli_fetch_array($result)) {
         <br />
         <label for="submit">&nbsp;</label>
         <input type="submit" name="submit" class="btn btn-info" value="Submit">
+        <a class="btn btn-danger del" href="delete.php?id=<?php echo $blog_id ?>">Delete</a>
+        <script>
+            $(document).ready(function() {
+                $(".del").click(function() {
+                    if (!confirm("Do you want to delete")) {
+                        return false;
+                    }
+                });
+            });
+        </script>
     </div>
 </form>
 
