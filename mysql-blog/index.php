@@ -90,7 +90,7 @@ $result = mysqli_query($con, "SELECT * FROM npe_blog ORDER BY bid DESC $limstrin
 </div>
 </main>
 
-<div class="row bg-dark pt-3 mt-5">
+<div class="row custom-pagination pt-3 mt-5">
   <div class="col-12">
     <?php include('includes/pagination.php'); ?>
   </div>

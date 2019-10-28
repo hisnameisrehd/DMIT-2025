@@ -76,8 +76,8 @@ if (isset($_POST['submit'])) {
 		<?php endif; ?>
 	</div>
 	<div class="nav-item dropdown">
-		<a class="nav-link dropdown-toggle rainbow-text" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>Emoticons</strong></a>
-		<div class="dropdown-menu" aria-labelledby="dropdown01">
+		<a class="nav-link dropdown-toggle rainbow-text p-0 pl-1" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong class="p-1" style="border-radius:6px;font-size:1.2rem;">Emoticons</strong></a>
+		<div class="dropdown-menu bg-dark" aria-labelledby="dropdown01">
 			<div class="dropdown-item">
 				<!-- emoticon select -->
 				<a href="javascript:emoticon(':D')">
@@ -101,7 +101,7 @@ if (isset($_POST['submit'])) {
 	<div class="form-group mb-5">
 		<br />
 		<label for="submit">&nbsp;</label>
-		<input type="submit" name="submit" class="btn btn-info" value="Submit">
+		<input type="submit" name="submit" class="btn btn-success" value="Create">
 	</div>
 </form>
 

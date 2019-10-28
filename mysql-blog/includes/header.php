@@ -68,7 +68,7 @@ include("mysql_connect.php"); // here we include the connection script; since th
 <body onload=display_ct();>
   <style>
     html {
-      background: black;
+      background: #343a40;
     }
 
     body {
@@ -93,7 +93,7 @@ include("mysql_connect.php"); // here we include the connection script; since th
     }
 
     .blogpost {
-      background-color: #f5eceb;
+      background-color: #fcd2cd;
       margin: 0 auto;
       padding: 0;
       border: 1px solid black;
@@ -141,12 +141,12 @@ include("mysql_connect.php"); // here we include the connection script; since th
     }
 
     .message-box {
-      background: #ffffff;
+      background: #f5eceb;
       border-radius: 5px;
     }
 
     .custom-pagination {
-      background: #000000;
+      background: #343a40;
       border-radius: 5px;
     }
   </style>

@@ -1,7 +1,9 @@
 /* Here we can add anything we want to suit our project. */
 
 .jumbotron{
-	padding: 30px;
+	padding: 20px;
+	background: #343a40;
+	color: white;
 }
 
 .container{
