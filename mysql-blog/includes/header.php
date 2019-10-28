@@ -55,7 +55,6 @@ include("mysql_connect.php"); // here we include the connection script; since th
 
 <body>
   <style>
- 
     .constrain-content {
       max-width: 950px;
     }
@@ -138,10 +137,18 @@ include("mysql_connect.php"); // here we include the connection script; since th
           <div class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" href="<?php echo BASE_URL ?>admin/insert.php">Insert</a>
             <!-- <a class="dropdown-item" href="<?php echo BASE_URL ?>#">Link</a> -->
-
-
-
           </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <?php
+          if (isset($_SESSION['PHP_Test_Secure'])) {
+            echo "<a class=\"nav-link\" href=\"" .
+              BASE_URL .
+              "admin/logout.php\">Logout</a>";
+          }
+          ?>
         </li>
       </ul>
       <!-- Search Bar: 
