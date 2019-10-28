@@ -13,7 +13,7 @@ include("../includes/header.php");
 <?php
 //if not set we will give this a default value
 $blog_id = $_GET['blogs'];
-echo $blog_id;
+// echo $blog_id;
 if (!isset($blog_id)) {
     $result = mysqli_query($con, "SELECT bid FROM npe_blog ORDER BY bid DESC LIMIT 1 ") or die(mysqli_error($con));
     while ($row = mysqli_fetch_array($result)) {
