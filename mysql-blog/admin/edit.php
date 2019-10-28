@@ -62,7 +62,6 @@ if (!isset($blog_id)) {
     }
 }
 
-
 // Prepopulate the fields based on the selected post
 $result = mysqli_query($con, "SELECT * FROM npe_blog WHERE bid = '$blog_id'") or die(mysqli_error($con));
 // loop trhough results
@@ -74,7 +73,6 @@ while ($row = mysqli_fetch_array($result)) {
 ?>
 
 <h2>Edit</h2>
-
 
 <form method="get" action="edit.php?id=<?php echo $_POST['blogs']; ?>">
 
@@ -105,12 +103,7 @@ while ($row = mysqli_fetch_array($result)) {
     </div>
 </form>
 
-
-
-
-
-
-<form id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
+<form class="pb-5" id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
 
     <div class="form-group">
         <label for="title">Title:</label>
@@ -153,7 +146,7 @@ while ($row = mysqli_fetch_array($result)) {
             </div>
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group mb-5">
         <br />
         <label for="submit">&nbsp;</label>
         <input type="submit" name="submit" class="btn btn-info" value="Submit">

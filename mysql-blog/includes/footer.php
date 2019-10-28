@@ -1,8 +1,3 @@
-		</div>
-		</main>
+</body>
 
-
-
-		</body>
-
-		</html>
+</html>

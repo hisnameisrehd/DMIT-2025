@@ -50,7 +50,13 @@ if (isset($_POST['submit'])) {
 ?>
 
 <h2>Insert</h2>
-<form id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+
+
+<form class="pb-5" id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+	<div class="form-group">
+		<label for="ct">Current Time:</label>
+		<span class="form-control" id='ct' readonly></span>
+	</div>
 	<div class="form-group">
 		<label for="title">Title:</label>
 		<input type="text" name="title" class="form-control" value="<?php if ($title) : ?><?php echo $title; ?><?php endif; ?>">
@@ -92,7 +98,7 @@ if (isset($_POST['submit'])) {
 			</div>
 		</div>
 	</div>
-	<div class="form-group">
+	<div class="form-group mb-5">
 		<br />
 		<label for="submit">&nbsp;</label>
 		<input type="submit" name="submit" class="btn btn-info" value="Submit">

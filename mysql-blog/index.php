@@ -85,32 +85,16 @@ $result = mysqli_query($con, "SELECT * FROM npe_blog ORDER BY bid DESC $limstrin
     </li>
   <?php endwhile; ?>
   <!-- end mysqli_fetch_array() -->
-</ul>
 
-<?php
-///////////////// pagination links: perhaps put these BELOW where your results are echo'd out.
-if ($postnum > $limit) {
-  echo "<strong>Pages:</strong> &nbsp;&nbsp;&nbsp;";
-  $n = $pg + 1;
-  $p = $pg - 1;
-  $thisroot = $_SERVER['PHP_SELF'];
-  if ($pg > 1) {
-    echo "<a href=\"$thisroot?pg=$p\"><< prev</a>&nbsp;&nbsp;";
-  }
-  for ($i = 1; $i <= $num_pages; $i++) {
-    if ($i != $pg) {
-      echo "<a href=\"$thisroot?pg=$i\">$i</a>&nbsp;&nbsp;";
-    } else {
-      echo "$i&nbsp;&nbsp;";
-    }
-  }
-  if ($pg < $num_pages) {
-    echo "<a href=\"$thisroot?pg=$n\">next >></a>";
-  }
-  echo "&nbsp;&nbsp;";
-}
-////////////// end pagination
-?>
+</ul>
+</div>
+</main>
+
+<div class="row bg-dark pt-3 mt-5">
+  <div class="col-12">
+    <?php include('includes/pagination.php'); ?>
+  </div>
+</div>
 
 <?php
 include("includes/footer.php");

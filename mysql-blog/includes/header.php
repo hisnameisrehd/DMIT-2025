@@ -50,11 +50,31 @@ include("mysql_connect.php"); // here we include the connection script; since th
         txtarea.focus();
       }
     }
+
+    function display_c() {
+      var refresh = 1000; // Refresh rate in milli seconds
+      mytime = setTimeout('display_ct()', refresh)
+    }
+
+    function display_ct() {
+      var x = new Date()
+      var x1 = x.toUTCString(); // changing the display to UTC string
+      document.getElementById('ct').innerHTML = x1;
+      tt = display_c();
+    }
   </script>
 </head>
 
-<body>
+<body onload=display_ct();>
   <style>
+    html {
+      background: black;
+    }
+
+    body {
+      background: rgb(153, 151, 151);
+    }
+
     .rainbow-text {
       background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
       -webkit-background-clip: text;
@@ -122,6 +142,11 @@ include("mysql_connect.php"); // here we include the connection script; since th
 
     .message-box {
       background: #ffffff;
+      border-radius: 5px;
+    }
+
+    .custom-pagination {
+      background: #000000;
       border-radius: 5px;
     }
   </style>
