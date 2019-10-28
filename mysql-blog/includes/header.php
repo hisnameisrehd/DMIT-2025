@@ -55,6 +55,12 @@ include("mysql_connect.php"); // here we include the connection script; since th
 
 <body>
   <style>
+    .rainbow-text {
+      background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
     .constrain-content {
       max-width: 950px;
     }
@@ -136,6 +142,7 @@ include("mysql_connect.php"); // here we include the connection script; since th
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" href="<?php echo BASE_URL ?>admin/insert.php">Insert</a>
+            <a class="dropdown-item" href="<?php echo BASE_URL ?>admin/edit.php">Edit</a>
             <!-- <a class="dropdown-item" href="<?php echo BASE_URL ?>#">Link</a> -->
           </div>
         </li>
