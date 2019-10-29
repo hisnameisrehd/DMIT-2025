@@ -36,7 +36,7 @@ include("../includes/header.php");
     <h1>Login</h1>
 </div>
 
-<form id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+<form class="pb-5" id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
     <div class="form-group">
         <label for="username">Username:</label>
         <input class="form-control" type="text" name="username">
@@ -45,7 +45,7 @@ include("../includes/header.php");
         <label for="password">Password:</label>
         <input class="form-control" type="password" name="password">
     </div>
-    <div class="form-group">
+    <div class="form-group mb-5">
         <label for="submit">&nbsp;</label>
         <input type="submit" name="mysubmit" class="btn btn-info" value="Submit">
     </div>

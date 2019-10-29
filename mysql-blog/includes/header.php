@@ -35,7 +35,7 @@ include("mysql_connect.php"); // here we include the connection script; since th
   <!--  Note how we can use BASE_URL constant to resolve all links no matter where the file resides. -->
   <link href="<?php echo BASE_URL ?>css/styles.css" rel="stylesheet">
   <!-- Themes from https://bootswatch.com/ : Use the Themes dropdown to select a theme you like; copy/paste the bootstrap.css. Here, we have named the downloaded theme as a new file and can overwrite the default.  -->
-  <!-- <link href="<?php echo BASE_URL ?>css/bootstrap-lumen.css" rel="stylesheet"> -->
+  <!-- <link href="<?php echo BASE_URL ?>css/bootstrap-cerulean.css" rel="stylesheet"> -->
 
   <script type="text/javascript">
     function emoticon(text) {
@@ -152,7 +152,7 @@ include("mysql_connect.php"); // here we include the connection script; since th
   </style>
 
   <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 fixed-top">
-    <a class="navbar-brand" href="<?php echo BASE_URL ?>index.php"><i class="material-icons" style="font-size:36px">home</i></a>
+    <a class="navbar-brand" href="<?php echo BASE_URL ?>index.php"><i class="material-icons" style="font-size:36px;color:#007bff;">home</i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
