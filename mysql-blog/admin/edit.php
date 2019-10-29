@@ -124,15 +124,21 @@ while ($row = mysqli_fetch_array($result)) {
         <?php endif; ?>
     </div>
     <div class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle rainbow-text p-0 pl-1" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong class="p-1" style="border-radius:6px;font-size:1.2rem;">Emoticons</strong></a>
-		<div class="dropdown-menu bg-dark" aria-labelledby="dropdown01">
+        <a class="nav-link dropdown-toggle rainbow-text p-0 pl-1" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong class="p-1" style="border-radius:6px;font-size:1.2rem;">Emoticons</strong></a>
+        <div class="dropdown-menu bg-dark" aria-labelledby="dropdown01">
             <div class="dropdown-item">
                 <!-- emoticon select -->
+                <a href="javascript:emoticon(':S')">
+                    <img src="../emoticons/icon_confused.gif" alt="">
+                </a>
                 <a href="javascript:emoticon(':D')">
                     <img src="../emoticons/icon_biggrin.gif" alt="">
                 </a>
                 <a href="javascript:emoticon('8)')">
                     <img src="../emoticons/icon_cool.gif" alt="">
+                </a>
+                <a href="javascript:emoticon('O-O')">
+                    <img src="../emoticons/icon_eek.gif" alt="">
                 </a>
                 <a href="javascript:emoticon(':(')">
                     <img src="../emoticons/icon_sad.gif" alt="">

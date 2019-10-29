@@ -1,11 +1,17 @@
 <?php
 function addEmoticons($txt)
 {
+  $thisEmoticon = "<img src=\"emoticons/icon_confused.gif\" alt=\"\">";
+  $txt = str_replace(":S", $thisEmoticon, $txt);
+
   $thisEmoticon = "<img src=\"emoticons/icon_biggrin.gif\" alt=\"\">";
   $txt = str_replace(":D", $thisEmoticon, $txt);
 
   $thisEmoticon = "<img src=\"emoticons/icon_sad.gif\" alt=\"\">";
   $txt = str_replace(":(", $thisEmoticon, $txt);
+
+  $thisEmoticon = "<img src=\"emoticons/icon_eek.gif\" alt=\"\">";
+  $txt = str_replace("O-O", $thisEmoticon, $txt);
 
   $thisEmoticon = "<img src=\"emoticons/icon_cool.gif\" alt=\"\">";
   $txt = str_replace("8)", $thisEmoticon, $txt);
