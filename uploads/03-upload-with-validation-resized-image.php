@@ -74,7 +74,7 @@ function resizeImage($file, $folder, $newWidth){
     $thumb = imagecreatetruecolor($newWidth, $newHeight);
     $source = imagecreatefromjpeg($file);
 
-    imagecopyresampled($thumb, $source, 0 , 0, 0, 0, $newWidth, $newHeight, $width, $height);
+    imagecopyresampled($thumb, $source, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
 
     $newFile = $folder . basename($_FILES['myfile']['name']);
 
