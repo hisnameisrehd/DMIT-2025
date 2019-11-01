@@ -1,0 +1,18 @@
+<?php 
+
+$im = imagecreatefromjpeg("img/elk.jpg");
+
+////// EMBOSS (APPLY TO IMAGE CREATED FROM PHOTO)
+
+$emboss = array(array(2, 0, 0), array(0, -1, 0), array(0, 0, -1));
+imageconvolution($im, $emboss, 1, 127);
+
+
+
+header("Content-type: image/jpeg");
+
+imagejpeg($im);
+
+imagedestroy($im);
+
+ ?>
