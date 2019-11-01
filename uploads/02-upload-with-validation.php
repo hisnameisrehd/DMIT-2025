@@ -32,6 +32,33 @@ if(isset($_POST['mysubmit'])){
     // } else {
     //     echo "<h3>ERROR</h3>";
     // }
+
+    $valid = 1;
+    $valMessage .= "";
+
+    // check type
+    if($_FILES['myfile']['type'] != "image/jpeg"){
+        $valid = 0;
+        $valMessage .= "Not a JPEG image.";
+    }
+
+    // check size
+    if($_FILES['myfile']['size'] > (10 * 1024 * 1024)){
+        $valid = 0;
+        $valMessage .= "Image too large. Cannot be over 10MB.";
+    }
+
+
+    if($valid == 1){
+        // move_uploaded_file
+        if(move_uploaded_file ( $_FILES['myfile']['tmp_name'] , "uploaded-files/" . $_FILES['myfile']['name'] )){
+            echo "<h3>UPLOADED</h3>";
+        } else {
+            echo "<h3>ERROR</h3>";
+        }
+    } else {
+        echo "<h3>ERROR</h3>";
+    }
 }
 
 ?>
