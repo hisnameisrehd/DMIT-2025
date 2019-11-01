@@ -55,6 +55,7 @@ if(isset($_POST['mysubmit'])){
             // call resize function
             $thisFile = "originals/" . $_FILES['myfile']['name'];
             resizeImage($thisFile, "thumbs/", 200);
+            resizeImage($thisFile, "display/", 750);
 
             echo "<h3>UPLOADED</h3>";
         } else {
