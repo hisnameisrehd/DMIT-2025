@@ -51,7 +51,11 @@ if(isset($_POST['mysubmit'])){
     // if valid
     if($valid == 1){
         // move_uploaded_file
-        if(move_uploaded_file ( $_FILES['myfile']['tmp_name'] , "uploaded-files/" . $_FILES['myfile']['name'] )){
+        if(move_uploaded_file ( $_FILES['myfile']['tmp_name'] , "originals/" . $_FILES['myfile']['name'] )){
+            // call resize function
+            $thisFile = "originals/" . $_FILES['myfile']['name'];
+            resizeImage($thisFile, "thumbs/", 200);
+
             echo "<h3>UPLOADED</h3>";
         } else {
             echo "<h3>ERROR</h3>";
@@ -59,6 +63,24 @@ if(isset($_POST['mysubmit'])){
     } else {
         echo "<h3>ERROR</h3>";
     }
+}
+
+function resizeImage($file, $folder, $newWidth){
+    list($width, $height) = getimagesize($file);
+    $imgRatio = $width/$height;
+    $newHeight = $newWidth/$imgRatio;
+
+    $thumb = imagecreatetruecolor($newWidth, $newHeight);
+    $source = imagecreatefromjpeg($file);
+
+    imagecopyresampled($thumb, $source, 0 , 0, 0, 0, $newWidth, $newHeight, $width, $height);
+
+    $newFile = $folder . basename($_FILES['myfile']['name']);
+
+    imagejpeg($thumb, $newFile, 80);
+
+    imagedestroy($thumb);
+    imagedestroy($source);
 }
 
 ?>
