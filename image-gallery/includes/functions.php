@@ -1,7 +1,27 @@
 <?php 
 
+function resizeImage($file, $folder, $newWidth){
+    list($width, $height) = getimagesize($file);
+    $imgRatio = $width/$height;
+    $newHeight = $newWidth/$imgRatio;
+
+    $thumb = imagecreatetruecolor($newWidth, $newHeight);
+    $source = imagecreatefromjpeg($file);
+
+    imagecopyresampled($thumb, $source, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+
+    $newFile = $folder . basename($_FILES['myfile']['name']);
+
+    imagejpeg($thumb, $newFile, 80);
+
+    imagedestroy($thumb);
+    imagedestroy($source);
+}
+
+
 //// This function will create a square thumbnail image. Very cool for an Image Gallery as all images will be the same size and shape (square) so easy to align. It does so by cropping top/bottom for portrait pics; both sides for landscape pics.
 // Best to use this for thumbs only; display pics should show the entire picture.
+
 
 function createSquareImageCopy($file, $folder, $newWidth){
 	
