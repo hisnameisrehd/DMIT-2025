@@ -1,27 +1,25 @@
-<?php 
+<?php
+function createImageCopy($file, $folder, $newwidth){
 
-function resizeImage($file, $folder, $newWidth){
-    list($width, $height) = getimagesize($file);
-    $imgRatio = $width/$height;
-    $newHeight = $newWidth/$imgRatio;
+list($width, $height) = getimagesize($file);
+$imgRatio = $width/$height;
+$newheight = $newwidth/$imgRatio;
 
-    $thumb = imagecreatetruecolor($newWidth, $newHeight);
-    $source = imagecreatefromjpeg($file);
+$thumb = imagecreatetruecolor($newwidth, $newheight);
+$source = imagecreatefromjpeg($file);
 
-    imagecopyresampled($thumb, $source, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+// resize
+imagecopyresampled($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
 
-    $newFile = $folder . basename($_FILES['myfile']['name']);
+$newFileName = $folder. "/" .basename($file);
 
-    imagejpeg($thumb, $newFile, 80);
+imagejpeg($thumb, $newFileName, 80);
 
-    imagedestroy($thumb);
-    imagedestroy($source);
+imagedestroy($thumb);
+
+imagedestroy($source);
+
 }
-
-
-//// This function will create a square thumbnail image. Very cool for an Image Gallery as all images will be the same size and shape (square) so easy to align. It does so by cropping top/bottom for portrait pics; both sides for landscape pics.
-// Best to use this for thumbs only; display pics should show the entire picture.
-
 
 function createSquareImageCopy($file, $folder, $newWidth){
 	
@@ -60,8 +58,6 @@ function createSquareImageCopy($file, $folder, $newWidth){
 	$newFileName = $folder. "/" .basename($file);
 	imagejpeg($thumb, $newFileName, 80);
 
-	echo "<p><img src=\"$newFileName\" /></p>";
-
-
+	// echo "<p><img src=\"$newFileName\" /></p>";
 }
 ?>

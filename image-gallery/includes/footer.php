@@ -1,8 +1,10 @@
 		</div>
-		</main>
+    </main>
+
+    
+  </body>
+</html>
 
 
 
-		</body>
 
-		</html>
