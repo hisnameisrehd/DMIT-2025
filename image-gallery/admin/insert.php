@@ -49,21 +49,15 @@ if (isset($_POST['submit'])) {
 
 			mysqli_query($con, "INSERT INTO image_gallery(npe_title, npe_description, npe_file) VALUES('$title','$description','$dbFileName')") or die(mysqli_error($con));
 
-
 			echo "<h3>Upload Successful</h3>";
 		} else {
 			echo "<h3>ERROR</h3>";
 		}
-
-
 		echo "<h2>success</h2>";
 	} else {
-
 		echo "<h2>" . $valMessage . "</h2>";
 	}
 }
-
-
 ?>
 
 <h2>Title</h2>
@@ -85,9 +79,6 @@ if (isset($_POST['submit'])) {
 		<label for="submit">&nbsp;</label>
 		<input type="submit" name="submit" class="btn btn-info" value="Submit">
 	</div>
-
-
-
 </form>
 <?php
 include("../includes/footer.php");
