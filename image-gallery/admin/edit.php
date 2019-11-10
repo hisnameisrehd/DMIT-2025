@@ -12,16 +12,16 @@ include("../includes/_functions.php")
 
 ?>
 <?php
-$char_id = $_GET['id']; // page-setter variable
+$image_id = $_GET['id']; // page-setter variable
 //if not set we will give this a default value
-if (!isset($char_id)) {
+if (!isset($image_id)) {
     $result = mysqli_query($con, "SELECT id FROM image_gallery LIMIT 1") or die(mysqli_error($con));
     while ($row = mysqli_fetch_array($result)) {
 
-        $char_id = $row['id'];
+        $image_id = $row['id'];
     }
 }
-// echo "<h1>$char_id</h1>";
+// echo "<h1>$image_id</h1>";
 
 // Step 3: If the user clicks submit, validate
 if (isset($_POST['submit'])) {
@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
         mysqli_query($con, "UPDATE image_gallery SET 
                 npe_title = '$title', 
                 npe_description = '$description' 
-                WHERE id=$char_id") or die(mysqli_error($con));
+                WHERE id=$image_id") or die(mysqli_error($con));
     }
 }
 
@@ -67,7 +67,7 @@ while ($row = mysqli_fetch_array($result)) {
 }
 
 // Step 2: Prepopulate the fields based on the selected character
-$result = mysqli_query($con, "SELECT * FROM image_gallery WHERE id = '$char_id'") or die(mysqli_error($con));
+$result = mysqli_query($con, "SELECT * FROM image_gallery WHERE id = '$image_id'") or die(mysqli_error($con));
 // loop trhough results
 while ($row = mysqli_fetch_array($result)) {
     $title = $row['npe_title'];
@@ -113,7 +113,7 @@ while ($row = mysqli_fetch_array($result)) {
             <div class="form-group">
                 <label for="submit">&nbsp;</label>
                 <input type="submit" name="submit" class="btn btn-info" value="Submit">
-                <a class="btn btn-danger del" href="delete.php?id=<?php echo $char_id ?>">Delete</a>
+                <a class="btn btn-danger del" href="delete.php?id=<?php echo $image_id ?>">Delete</a>
                 <script>
                     $(document).ready(function() {
                         $(".del").click(function() {
