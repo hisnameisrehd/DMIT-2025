@@ -70,26 +70,23 @@ $result = mysqli_query($con, "SELECT * FROM image_gallery ORDER BY id ASC $limst
     height: 95%;
   }
 </style>
-<div class="row custom-pagination gallery-card-container pb-1">
-  <div class="col-12">
-    <?php include('includes/pagination.php'); ?>
-  </div>
-</div>
-<div class="row d-flex gallery-card-container justify-content-center">
+<div class="row d-flex gallery-card-container justify-content-center justify-content-sm-start">
   <?php while ($row = mysqli_fetch_array($result)) : ?>
     <a href="gallery.php?id=<?php echo $row['id']; ?>">
       <div class="gallery-card">
         <div class="gallery-card-image">
           <img src="images/squares/<?php echo $row['npe_file']; ?>" alt="thumbnail" />
+          <h4 class="pt-2"><?php echo $row['npe_title']; ?></h4>
         </div>
       </div>
     </a>
   <?php endwhile; ?>
 </div>
-
-
-
-
+<div class="row custom-pagination gallery-card-container pb-1">
+  <div class="col-12">
+    <?php include('includes/pagination.php'); ?>
+  </div>
+</div>
 <?php
 
 include("includes/footer.php");

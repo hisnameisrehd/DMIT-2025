@@ -13,13 +13,13 @@ $result = mysqli_query($con, "SELECT * FROM image_gallery WHERE id = $id");
 <?php while ($row = mysqli_fetch_array($result)) : ?>
     <!-- Go ahead and do some HTML/CSS styling in here...I dare you! -->
     <div class="row">
-        <div class="col-9">
+        <div class="col-xl-9">
             <?php if ($row['npe_file'] != "") : ?>
                 <img src="images/display/<?php echo $row['npe_file']; ?>" alt="">
             <?php endif; ?>
         </div>
 
-        <div class="col-3">
+        <div class="col-xl-3">
             <?php if ($row['npe_title'] != "") : ?>
                 <h1><?php echo $row['npe_title']; ?></h1>
             <?php endif; ?>
