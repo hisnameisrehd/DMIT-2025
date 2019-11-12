@@ -52,7 +52,18 @@ include("mysql_connect.php"); // here we include the connection script; since th
 
         <li class="nav-item active">
           <!-- This is a placeholder link. You will need to change this to link to your files. -->
-          <a class="nav-link" href="<?php echo BASE_URL ?>#">Gallery</a>
+
+
+          <a class="nav-link" href="
+          <?php
+        $result = mysqli_query($con, "SELECT * FROM image_gallery ORDER BY id ASC LIMIT 1");
+        ?>
+        <?php while ($row = mysqli_fetch_array($result)) : ?>
+            <?php if ($row['id'] != null) : ?>
+                http://npeters5.dmitstudent.ca/dmit2025/image-gallery/gallery.php?id=<?php echo $row['id'] ?>
+            <?php endif; ?>
+        <?php endwhile; ?>
+          ">Gallery</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
