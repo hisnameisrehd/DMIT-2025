@@ -27,12 +27,12 @@ $result = mysqli_query($con, "SELECT * FROM image_gallery WHERE id = $id");
                 <p><?php echo $row['npe_description']; ?></p>
             <?php endif; ?>
             <div>
-                <button class="btn btn-info back-button"><<-</button>
-                <button class="btn btn-info next-button">->></button>
+                <button class="btn btn-info back-button">
+                    <<-</button> <button class="btn btn-info next-button">->>
+                </button>
             </div>
         </div>
     </div>
-
 <?php endwhile; ?>
 
 <script type="text/javascript">
@@ -41,8 +41,7 @@ $result = mysqli_query($con, "SELECT * FROM image_gallery WHERE id = $id");
 
     nextButton.addEventListener("click", e => {
         <?php
-        $nextPage = $id + 1;
-        $result = mysqli_query($con, "SELECT * FROM image_gallery WHERE id > $id LIMIT 1");
+        $result = mysqli_query($con, "SELECT * FROM image_gallery WHERE id > $id ORDER BY id ASC LIMIT 1");
         ?>
         <?php while ($row = mysqli_fetch_array($result)) : ?>
             <?php if ($row['id'] != null) : ?>
@@ -53,8 +52,7 @@ $result = mysqli_query($con, "SELECT * FROM image_gallery WHERE id = $id");
 
     backButton.addEventListener("click", e => {
         <?php
-        $nextPage = $id + 1;
-        $result = mysqli_query($con, "SELECT * FROM image_gallery WHERE id < $id LIMIT 1");
+        $result = mysqli_query($con, "SELECT * FROM image_gallery WHERE id < $id ORDER BY id DESC LIMIT 1");
         ?>
         <?php while ($row = mysqli_fetch_array($result)) : ?>
             <?php if ($row['id'] != null) : ?>

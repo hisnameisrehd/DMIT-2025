@@ -1,5 +1,5 @@
-<strong class="pl-5" style="color:#007bff">Pages:</strong> &nbsp;&nbsp;&nbsp;
-<ul class="pagination pr-5 pl-5 mt-1">
+<strong class="" style="color:#007bff">Pages:</strong> &nbsp;&nbsp;&nbsp;
+<ul class="pagination mt-1">
     <style>
         .new-page-link {
             position: relative;
