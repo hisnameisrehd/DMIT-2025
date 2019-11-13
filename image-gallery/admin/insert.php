@@ -34,20 +34,20 @@ if (isset($_POST['submit'])) {
 
 
 	if ($valid == 1) {
+		$uniqidFileName = "image_" . uniqid() . ".jpg";
 
-		if (move_uploaded_file($_FILES['myfile']['tmp_name'], "../images/originals/" . $_FILES['myfile']['name'])) {
-
-			$thisFile = "../images/originals/" . $_FILES['myfile']['name'];
-
-			$dbFileName = $_FILES['myfile']['name'];
+		if (move_uploaded_file($_FILES['myfile']['tmp_name'], "../images/originals/" . $uniqidFileName)) {
+			
+			$thisFile = "../images/originals/" . $uniqidFileName;
 
 			createImageCopy($thisFile,  "../images/display/", 800);
-			createImageCopy($thisFile,  "../images/thumbs50/", 50);
 			createImageCopy($thisFile,  "../images/thumbs100/", 100);
 			createImageCopy($thisFile,  "../images/thumbs150/", 150);
-			createSquareImageCopy($thisFile, "../images/squares/", 150);
+			createImageCopy($thisFile,  "../images/thumbs200/", 200);
+			createSquareImageCopy($thisFile, "../images/squares150/", 150);
+			createSquareImageCopy($thisFile, "../images/squares50/", 50);
 
-			mysqli_query($con, "INSERT INTO image_gallery(npe_title, npe_description, npe_file) VALUES('$title','$description','$dbFileName')") or die(mysqli_error($con));
+			mysqli_query($con, "INSERT INTO image_gallery(npe_title, npe_description, npe_file) VALUES('$title','$description','$uniqidFileName')") or die(mysqli_error($con));
 
 			echo "<h3>Upload Successful</h3>";
 		} else {
