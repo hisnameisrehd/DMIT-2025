@@ -75,7 +75,7 @@ $result = mysqli_query($con, "SELECT * FROM image_gallery ORDER BY id ASC $limst
     <a href="gallery.php?id=<?php echo $row['id']; ?>">
       <div class="gallery-card">
         <div class="gallery-card-image">
-          <img src="images/squares/<?php echo $row['npe_file']; ?>" alt="thumbnail" />
+          <img src="images/squares150/<?php echo $row['npe_file']; ?>" alt="thumbnail" />
           <h4 class="pt-2"><?php echo $row['npe_title']; ?></h4>
         </div>
       </div>

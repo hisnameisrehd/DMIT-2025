@@ -61,9 +61,11 @@ $result = mysqli_query($con, "SELECT * FROM image_gallery") or die(mysqli_error(
 // loop trhough results
 while ($row = mysqli_fetch_array($result)) {
     $title = $row['npe_title'];
+    $image = $row['npe_file'];
     $id = $row['id'];
 
-    $editLinks .= "\n<hr><a id=\"style-links\" href=\"edit.php?id=$id\"><div class=\"row pl-2\"><div class=\"col-sm\">$title</div></div></a>";
+
+    $editLinks .= "\n<a class=\"edit-link\" id=\"style-links\" href=\"edit.php?id=$id\"><img src=\"../images/squares50/$image\" alt=\"thumbnail\" /></a>";
 }
 
 // Step 2: Prepopulate the fields based on the selected character
@@ -72,7 +74,7 @@ $result = mysqli_query($con, "SELECT * FROM image_gallery WHERE id = '$image_id'
 while ($row = mysqli_fetch_array($result)) {
     $title = $row['npe_title'];
     $description = $row['npe_description'];
-
+    $imageFile = $row['npe_file'];
 }
 
 
@@ -80,7 +82,7 @@ while ($row = mysqli_fetch_array($result)) {
 
 <h2>Edit</h2>
 <div class="row">
-    <div class="col">
+    <div class="col-5">
         <!-- left column -->
         <!-- 
             $_SERVER['PHP_SELF'] means goto the current file
@@ -88,6 +90,7 @@ while ($row = mysqli_fetch_array($result)) {
             $_SERVER['REQUEST_URI'] is also same page. 
                 - does retain info
         -->
+
         <form id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
             <?php if ($valid == 1) {
                 echo $msgPreSuccess . $msgSuccess . $msgPost;
@@ -126,9 +129,23 @@ while ($row = mysqli_fetch_array($result)) {
             </div>
         </form>
     </div> <!-- \\ left column -->
-    <div class="col">
+    <div class="col-2">
+        <!-- center column -->
+        <style>
+            .edit-link {
+                margin-right: .3rem;
+            }
+            .edit-link:hover {
+                box-shadow: 0 0 5px 0 black;
+            }
+        </style>
+        <img src="../images/thumbs150/<?php if ($imageFile) {
+                                            echo $imageFile;
+                                        } ?>" alt="">
+    </div> <!-- \\ center column -->
+    <div class="col-5">
         <!-- right column -->
-        <div class="navlinks">
+        <div class="row d-flex justify-content-start">
             <?php echo $editLinks; ?>
         </div>
     </div> <!-- \\ right column -->

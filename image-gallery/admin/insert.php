@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
 		$uniqidFileName = "image_" . uniqid() . ".jpg";
 
 		if (move_uploaded_file($_FILES['myfile']['tmp_name'], "../images/originals/" . $uniqidFileName)) {
-			
+
 			$thisFile = "../images/originals/" . $uniqidFileName;
 
 			createImageCopy($thisFile,  "../images/display/", 800);
