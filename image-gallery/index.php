@@ -49,33 +49,47 @@ $result = mysqli_query($con, "SELECT * FROM image_gallery ORDER BY id ASC $limst
   .gallery-card-container {
     margin: 0 auto;
     max-width: 960px;
-    padding-left: 1.1rem;
+    padding-left: 1rem;
+  }
+
+  a:hover {
+    text-decoration: none;
+    /* no underline */
+  }
+
+  .gallery-a:hover {
+    box-shadow: 0 0 5px 0 black;
+  }
+
+  .gallery-card h4 {
+    color: #2a2a2a;
   }
 
   .gallery-card {
-    padding-top: .7rem;
-    height: 240px;
+    color: gray;
+    padding-top: .3rem;
+    height: 220px;
     background: black;
     border: 2px solid black;
     border-radius: 6px;
-    margin-right: 1.1rem;
+    margin-right: 1rem;
     margin-bottom: 1rem;
   }
 
   .gallery-card-image {
-    padding-top: .7rem;
+    padding-top: .5rem;
     padding-left: .5rem;
     padding-right: .5rem;
     background: white;
-    height: 95%;
+    height: 98%;
   }
 </style>
 <div class="row d-flex gallery-card-container justify-content-center justify-content-sm-start">
   <?php while ($row = mysqli_fetch_array($result)) : ?>
     <a href="gallery.php?id=<?php echo $row['id']; ?>">
-      <div class="gallery-card">
+      <div class="gallery-card gallery-a">
         <div class="gallery-card-image">
-          <img src="images/squares150/<?php echo $row['npe_file']; ?>" alt="thumbnail" />
+          <img style="border:1px solid grey;" src="images/squares150/<?php echo $row['npe_file']; ?>" alt="thumbnail" />
           <h4 class="pt-2"><?php echo $row['npe_title']; ?></h4>
         </div>
       </div>

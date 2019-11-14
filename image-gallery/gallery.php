@@ -9,7 +9,15 @@ $id = $_GET['id'];
 <?php
 $result = mysqli_query($con, "SELECT * FROM image_gallery WHERE id = $id");
 ?>
+<style>
+    .info {
+        height: 20vh;
+    }
 
+    .downloads {
+        height: 10vh;
+    }
+</style>
 <?php while ($row = mysqli_fetch_array($result)) : ?>
     <!-- Go ahead and do some HTML/CSS styling in here...I dare you! -->
     <div class="row">
@@ -20,15 +28,46 @@ $result = mysqli_query($con, "SELECT * FROM image_gallery WHERE id = $id");
         </div>
 
         <div class="col-xl-3">
-            <?php if ($row['npe_title'] != "") : ?>
-                <h1><?php echo $row['npe_title']; ?></h1>
-            <?php endif; ?>
-            <?php if ($row['npe_description'] != "") : ?>
-                <p><?php echo $row['npe_description']; ?></p>
-            <?php endif; ?>
+            <div class="row info">
+                <div class="col-12">
+                <?php if ($row['npe_title'] != "") : ?>
+                    <h1><?php echo $row['npe_title']; ?></h1>
+                <?php endif; ?>
+                <?php if ($row['npe_description'] != "") : ?>
+                    <p><?php echo $row['npe_description']; ?></p>
+                <?php endif; ?>
+            </div>
+            </div>
+            <div class="row downloads">
+                <strong class="pl-3">Download</strong>
+                <div class="d-flex col-12">
+                    <a href="images/originals/<?php echo $row['npe_file']; ?>" download>
+                        [ Original ]
+                    </a>
+                    -
+                    <a href="images/display/<?php echo $row['npe_file']; ?>" download>
+                        [ Display ]
+                    </a>
+                </div>
+                <div class="d-flex col-12">
+                    <a href="images/thumbs100/<?php echo $row['npe_file']; ?>" download>
+                        [ T100 ]
+                    </a>
+                    -
+                    <a href="images/thumbs150/<?php echo $row['npe_file']; ?>" download>
+                        [ T150 ]
+                    </a>
+                    -
+                    <a href="images/thumbs200/<?php echo $row['npe_file']; ?>" download>
+                        [ T200 ]
+                    </a>
+                </div>
+            </div>
+            <br />
+            <br />
             <div>
                 <button class="btn btn-info back-button">
-                    <<-</button> <button class="btn btn-info next-button">->>
+                    <<-Prev</button> --- <button class="btn btn-info next-button">Next->>
                 </button>
             </div>
         </div>

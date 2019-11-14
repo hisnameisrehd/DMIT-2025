@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
     if ($valid == 1) {
         $title = trim($_POST['title']);
         $description = trim($_POST['description']);
-        $msgSuccess = "Cowabunga! Form data has been stored.";
+        $msgSuccess = "Success! Form data has been stored.";
         // Editing or changing data in a DB: UPDATE
         mysqli_query($con, "UPDATE image_gallery SET 
                 npe_title = '$title', 
@@ -129,21 +129,23 @@ while ($row = mysqli_fetch_array($result)) {
             </div>
         </form>
     </div> <!-- \\ left column -->
-    <div class="col-2">
+    <div class="col-3">
         <!-- center column -->
         <style>
             .edit-link {
                 margin-right: .3rem;
+                margin-bottom: .3rem;
             }
+
             .edit-link:hover {
                 box-shadow: 0 0 5px 0 black;
             }
         </style>
-        <img src="../images/thumbs150/<?php if ($imageFile) {
+        <img src="../images/thumbs200/<?php if ($imageFile) {
                                             echo $imageFile;
                                         } ?>" alt="">
     </div> <!-- \\ center column -->
-    <div class="col-5">
+    <div class="col-4">
         <!-- right column -->
         <div class="row d-flex justify-content-start">
             <?php echo $editLinks; ?>

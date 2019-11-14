@@ -60,4 +60,3 @@ function createSquareImageCopy($file, $folder, $newWidth){
 
 	// echo "<p><img src=\"$newFileName\" /></p>";
 }
-?>
