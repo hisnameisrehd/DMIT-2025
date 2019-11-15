@@ -38,7 +38,7 @@ while ($row = mysqli_fetch_array( $result )){
 	  $returnToLastQuery = "<p><b><a href=\"". $_SERVER['HTTP_REFERER']. "\">Back</a></b></p>";
 	  echo $returnToLastQuery;
 	  // IF A USER DECIDES TO VIEW THIS ONE ITEM IN FULL DETAIL, PERHAPS WE COULD CONSIDER THIS AS "POPULAR" AND START RECORDING "HITS"
-	 // mysql_query ("UPDATE dogs SET popularity = popularity +1 WHERE pooch_id = '$pooch_id'") or die (mysql_error());
+	 mysqli_query ($con, "UPDATE dogs SET popularity = popularity +1 WHERE pooch_id = '$pooch_id'") or die (mysqli_error($con));
 
 
 }
