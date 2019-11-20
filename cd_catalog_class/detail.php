@@ -60,6 +60,8 @@ $id = $_GET['cd_id'];
 ?>
 
 <?php
+require("mysql_connect.php");
+
 $result = mysqli_query($con, "SELECT * FROM cd_catalog_class WHERE cd_id = $id");
 ?>
 

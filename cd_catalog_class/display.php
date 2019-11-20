@@ -129,21 +129,25 @@ TASK: Here, create several links for the following:
 -->
 <h3>Year</h3>
 
-<a href="display.php?displayby=year&displayvalue=__5%">1950's</a><br />
-<a href="display.php?displayby=year&displayvalue=__6%">1960's</a><br />
-<a href="display.php?displayby=year&displayvalue=__7%">1970's</a><br />
-<a href="display.php?displayby=year&displayvalue=__8%">1980's</a><br />
-<a href="display.php?displayby=year&displayvalue=__9%">1990's</a><br />
+<a href="display.php?displayby=year&displayvalue=195%">1950's</a><br />
+<a href="display.php?displayby=year&displayvalue=196%">1960's</a><br />
+<a href="display.php?displayby=year&displayvalue=197%">1970's</a><br />
+<a href="display.php?displayby=year&displayvalue=198%">1980's</a><br />
+<a href="display.php?displayby=year&displayvalue=199%">1990's</a><br />
 <a href="display.php?displayby=year&displayvalue=200%">2000's</a><br />
 
 
-<h3>Popular Labels</h3>
+<?php
+echo "<h3>Popular Labels</h3>";
 
-<a href="display.php">Popular Labels</a><br />
-<a href="display.php?displayby=label&displayvalue=Epic Records">Epic Records</a><br />
-<a href="display.php?displayby=label&displayvalue=Atlantic">Atlantic</a><br />
-<a href="display.php?displayby=label&displayvalue=RCA">RCA</a><br />
-<a href="display.php?displayby=label&displayvalue=Jive">Jive</a><br />
+$popularCD = mysqli_query($con, "SELECT * FROM cd_catalog_class GROUP BY label ORDER BY Count(*) DESC LIMIT 5");
+while($row = mysqli_fetch_array($popularCD)){
+    $label = $row['label'];
+    $cd_id = $row['cd_id'];
+    echo "<a href=\"display.php?displayby=label&displayvalue=$label\">$label</a>" . "<br />";
+}
+?>
+
 <?php
 /*****************************
 Challenge: 
@@ -158,6 +162,46 @@ Challenge:
 
  
 ****************************/
+// $parent = '';
+// $level = 0;
+// display_children($parent, $level);
+// function display_children($parent, $level) {
+//     $result = mysql_query("SELECT a.cd_id, a.label, Deriv1.Count FROM cd_catalog_class a  LEFT OUTER JOIN (SELECT parent, COUNT(*) AS Count FROM cd_catalog_class GROUP BY label) Deriv1 ON a.id = Deriv1.parent WHERE a.parent=" . $parent);
+//     echo "<ul>";
+//     while ($row = mysql_fetch_assoc($result)) {
+//         if ($row['Count'] > 0) {
+//             echo "<li><a href='" . $row['link'] . "'>" . $row['label'] . "</a>";
+//             display_children($row['id'], $level + 1);
+//             echo "</li>";
+//         } elseif ($row['Count']==0) {
+//             echo "<li><a href='" . $row['link'] . "'>" . $row['label'] . "</a></li>";
+//         } else;
+//     }
+
+//     echo "</ul>";
+// }
+
+
+echo "<h3>Random CD</h3>";
+
+$randomCD = mysqli_query($con, "SELECT * FROM cd_catalog_class ORDER BY RAND() LIMIT 1");
+while($row = mysqli_fetch_array($randomCD)){
+    $artist = $row['artist'];
+    $cd_id = $row['cd_id'];
+    $imageFile = $row['artwork'];
+    echo "<a href=\"detail.php?cd_id=$cd_id\"><img src=\"artwork/thumbs100/$imageFile\"><br/>$artist</a>" . "<br />";
+}
+
+echo "<h3>Random Jazz Artist</h3>";
+
+$randomCD = mysqli_query($con, "SELECT * FROM cd_catalog_class WHERE genre LIKE 'jazz' ORDER BY RAND() LIMIT 1");
+while($row = mysqli_fetch_array($randomCD)){
+    $artist = $row['artist'];
+    $cd_id = $row['cd_id'];
+    $imageFile = $row['artwork'];
+    echo "<a href=\"detail.php?cd_id=$cd_id\"><img src=\"artwork/thumbs100/$imageFile\"><br/>$artist</a>" . "<br />";
+}
+
 echo "<h3>Alphabetical A - Z Links only</h3>";
 
 $qry = "SELECT *, LEFT(artist, 1) AS first_char FROM cd_catalog_class 
@@ -184,4 +228,3 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 </body>
 </html>
-
