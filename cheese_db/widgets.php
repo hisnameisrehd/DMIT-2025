@@ -15,15 +15,15 @@ while($row = mysqli_fetch_array($randomCheese)){
     echo "<a href=\"cheese.php?cid=$cid\"><img src=\"images/thumbs100/$imageFile\"><br/>$cheese</a>" . "<br />";
 }
 
-echo "<h3>Random Cheese from Blue Cheese (Large Dogs)</h3>";
+// echo "<h3>Random Cheese from Blue Cheese</h3>";
 
-$randomCheese = mysqli_query($con, "SELECT * FROM cheese_db WHERE type LIKE 'blue' ORDER BY RAND() LIMIT 1");
-while($row = mysqli_fetch_array($randomCheese)){
-    $cheese = $row['cheese'];
-    $cid = $row['cid'];
-    $imageFile = $row['image_file'];
-    echo "<a href=\"cheese.php?cid=$cid\"><img src=\"images/thumbs100/$imageFile\"><br/>$cheese</a>" . "<br />";
-}
+// $randomCheese = mysqli_query($con, "SELECT * FROM cheese_db WHERE classification LIKE 'blue' ORDER BY RAND() LIMIT 1");
+// while($row = mysqli_fetch_array($randomCheese)){
+//     $cheese = $row['cheese'];
+//     $cid = $row['cid'];
+//     $imageFile = $row['image_file'];
+//     echo "<a href=\"cheese.php?cid=$cid\"><img src=\"images/thumbs100/$imageFile\"><br/>$cheese</a>" . "<br />";
+// }
 
 ///////////////////////////////////////
 
@@ -45,7 +45,7 @@ while($row = mysqli_fetch_array($randomCheese)){
 // from http://www.webhostingtalk.com/showthread.php?t=717692
 // user "bigfan"
 
-echo "<h3>Alphabetical List</h3>";
+// echo "<h3>Alphabetical List</h3>";
 
 /*Mysql Left Function is used to return the leftmost string character from the string.
 Column Alias: 

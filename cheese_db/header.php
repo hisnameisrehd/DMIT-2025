@@ -5,8 +5,28 @@ include("mysql_connect.php");
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Filtering a Database</title>
+<title>Exploring Cheese</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+  <!-- Google Icons: https://material.io/tools/icons/
+  also, check out Font Awesome or Glyphicons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+ <!-- Themes from https://bootswatch.com/ : Use the Themes dropdown to select a theme you like; copy/paste the bootstrap.css. Here, we have named the downloaded theme as a new file and can overwrite the default.  -->
+ <!-- <link href="<?php echo BASE_URL ?>css/bootstrap-slate.css" rel="stylesheet"> -->
+
+
 <style type="text/css">
+
 
 body{
 	font-family: verdana;
@@ -19,7 +39,9 @@ body{
 	margin: auto;
 	background-color: #fff;
 	padding: 10px;
-	
+	padding-top: 20px;
+	margin-top: 65px;
+	position: sticky;
 }
 #links{
 	width: 220px;
@@ -83,21 +105,54 @@ h3{
 </head>
 
 <body>
-<div id="container">
-<h1><a href="index.php">Filtering a Database</a></h1>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 fixed-top">
+    <a class="navbar-brand" href="<?php echo BASE_URL ?>index.php"><i class="material-icons" style="font-size:36px">home</i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item active">
+          <!-- This is a placeholder link. You will need to change this to link to your files. -->
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown01">
+            <a class="dropdown-item" href="<?php echo BASE_URL ?>insert.php">Insert</a>
+            <a class="dropdown-item" href="<?php echo BASE_URL ?>admin/edit.php">Edit</a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <?php
+          if (isset($_SESSION['PHP_Test_Secure'])) {
+            echo "<a class=\"nav-link\" href=\"" .
+              BASE_URL .
+              "admin/logout.php\">Logout</a>";
+          }
+          ?>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
 
-<div id="links">
+  <div id="container">
+	  
+	  <h1><a href="index.php">Cheese DB</a></h1>
+	  <div id="links">
 	<h2>HTML Links with Query String</h2>
 	<h3>Default: No filter</h3>
 	<a href="index.php">ALL Cheese </a><br />
 
-	<h3>Filter by a Column = Value</h3>
-	<a href="index.php?displayby=type&displayvalue=soft">Soft Cheese</a>
+	<h3>Filter by cheese Classification</h3>
+	<a href="index.php?displayby=classification&displayvalue=soft">Soft Cheese</a>
 	<br />
-	<a href="index.php?displayby=type&displayvalue=hard">Hard Cheese</a>
+	<a href="index.php?displayby=classification&displayvalue=hard">Hard Cheese</a>
 	<br />
-	<a href="index.php?displayby=type&displayvalue=blue">Blue Cheese</a>
+	<a href="index.php?displayby=classification&displayvalue=blue">Blue Cheese</a>
 	<br />
 	<!-- <a href="index.php?displayby=lowshedding&displayvalue=yes">Lowshedding Dogs</a>
 	<br />
@@ -105,13 +160,17 @@ h3{
 	<br />
 	<a href="index.php?displayby=children&displayvalue=yes">Good Dogs w/ Children</a>
 	<br /> -->
-	<h3>Filter by an ID=Value, so 1 result Only</h3>
+
+	<!-- <h3>Filter by an ID=Value, so 1 result Only</h3> -->
 	<!-- <a href="index.php?displayby=pooch_id&displayvalue=16">Rottweiler</a>
 	<br /> -->
-	<h3>Filter by Age</h3>
-	<a href="index.php?displayby=age&min=1&max=4">1-4 Week Aged</a>
+
+	<h3>Filter by an Age range</h3>
+	<a href="index.php?displayby=age&min=1&max=4">1-4 Weeks</a>
 	<br />
-	<a href="index.php?displayby=age&min=4&max=15">4-15 Week Aged</a>
+	<a href="index.php?displayby=age&min=4&max=15">4-15 Weeks</a>
+	<br />
+	<a href="index.php?displayby=age&min=15&max=52">15-52 Weeks</a>
 	<br />
 	<!-- <a href="index.php?displayby=intelligence&min=7&max=10">Smart Dogs</a>
 	<br /> -->

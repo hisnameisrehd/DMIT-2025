@@ -33,6 +33,9 @@ while ($row = mysqli_fetch_array( $result )){
 	  echo "<b>Milk:</b> ". $row['type']. "<br />";
 	  echo "<b>Country:</b> ". $row['country']. "<br />";
 	  echo "<b>Classification:</b> ". $row['classification']. "<br />";
+	  if($row['age'] != 0){
+		  echo "<b>Age:</b> ". $row['age']. " weeks<br />";
+	  }
 	  echo "<b>Description:</b> ". $row['description']. "<br />";
 	  $returnToLastQuery = "<p><b><a href=\"". $_SERVER['HTTP_REFERER']. "\">Back</a></b></p>";
 	  echo $returnToLastQuery;
