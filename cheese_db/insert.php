@@ -111,7 +111,7 @@ include("_functions.php")
 
 
 		<div class="form-group">
-			<label for="age">Age (# weeks):</label>
+			<label for="age">Age (# months):</label>
 			<input type="number" name="age" class="form-control" value="<?php if ($age) {
 																				echo $age;
 																			} ?>">

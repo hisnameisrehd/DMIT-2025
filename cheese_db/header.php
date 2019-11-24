@@ -52,7 +52,7 @@ body{
 	
 }
 #results{
-	width: 600px;
+	width: 624px;
 	margin:10px;
 	padding: 7px;
 	
@@ -64,7 +64,7 @@ body{
 #widgets{
 	width: 220px;
 	margin:10px;
-	padding: 7px;
+	padding: 5px;
 
 	float:left;
 	
@@ -120,7 +120,6 @@ h3{
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" href="<?php echo BASE_URL ?>insert.php">Insert</a>
-            <a class="dropdown-item" href="<?php echo BASE_URL ?>admin/edit.php">Edit</a>
           </div>
         </li>
       </ul>
@@ -165,17 +164,19 @@ h3{
 	<!-- <a href="index.php?displayby=pooch_id&displayvalue=16">Rottweiler</a>
 	<br /> -->
 
-	<h3>Filter by an Age range</h3>
-	<a href="index.php?displayby=age&min=1&max=4">1-4 Weeks</a>
+	<h3>Filter by an Age</h3>
+	<a href="index.php?displayby=age&min=1&max=4">1-4 Months</a>
 	<br />
-	<a href="index.php?displayby=age&min=4&max=15">4-15 Weeks</a>
+	<a href="index.php?displayby=age&min=5&max=14">5-14 Months</a>
 	<br />
-	<a href="index.php?displayby=age&min=15&max=52">15-52 Weeks</a>
+	<a href="index.php?displayby=age&min=15&max=24">15-24 Months</a>
+	<br />
+	<a href="index.php?displayby=age&min=25&max=52">25-52 Months</a>
 	<br />
 	<!-- <a href="index.php?displayby=intelligence&min=7&max=10">Smart Dogs</a>
 	<br /> -->
-	<h3>Filter using BETWEEN: </h3>
-	<p>This would be great for price ranges</p>
+	<h3>Filter by Price range: </h3>
+	<!-- <p>This would be great for price ranges</p> -->
 	
 
 </div>

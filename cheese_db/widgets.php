@@ -28,6 +28,16 @@ while($row = mysqli_fetch_array($randomCheese)){
 ///////////////////////////////////////
 
 
+echo "<h3>Milk Types</h3>";
+
+$popularCD = mysqli_query($con, "SELECT * FROM cheese_db GROUP BY type ORDER BY Count(*) DESC LIMIT 5");
+while($row = mysqli_fetch_array($popularCD)){
+    $type = $row['type'];
+    $cid = $row['cid'];
+    echo "<a href=\"index.php?displayby=type&displayvalue=$type\">$type</a>" . "<br />";
+}
+
+
 ///////////////////////////////////////// POPULAR DOGS
 echo "<h3>Most Viewed Cheese</h3>";
 
