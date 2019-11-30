@@ -68,6 +68,10 @@ if($displayby == "age" && $min && $max){
 $sql = "SELECT * FROM cheese_db WHERE age BETWEEN $min AND $max";// SHOW ONLY DOGS FROM ID RANGE
 }
 
+if($displayby == "price" && $min && $max){
+	// $sql = "SELECT * FROM dogs WHERE...";
+$sql = "SELECT * FROM cheese_db WHERE price BETWEEN $min AND $max";// SHOW ONLY DOGS FROM ID RANGE
+}
 
 $result = mysqli_query($con,$sql); //OK. Let's run whatever query we have set above.
 echo "<h3>". $sql ."</h3>";// As well, let's see the actual query over the results (for our learning purposes only...NOT for the final product).
