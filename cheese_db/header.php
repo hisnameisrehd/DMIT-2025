@@ -119,7 +119,8 @@ h3{
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="<?php echo BASE_URL ?>insert.php">Insert</a>
+            <a class="dropdown-item" href="<?php echo BASE_URL ?>admin/insert.php">Insert</a>
+            <a class="dropdown-item" href="<?php echo BASE_URL ?>admin/edit.php">Edit</a>
           </div>
         </li>
       </ul>
@@ -140,18 +141,22 @@ h3{
 
   <div id="container">
 	  
-	  <h1><a href="index.php">Cheese DB</a></h1>
+	  <h1><a href="<?php echo BASE_URL ?>index.php">Cheese DB</a></h1>
 	  <div id="links">
 	<h2>HTML Links with Query String</h2>
 	<h3>Default: No filter</h3>
-	<a href="index.php">ALL Cheese </a><br />
+	<a href="<?php echo BASE_URL;?>index.php">ALL Cheese </a><br />
 
 	<h3>Filter by cheese Classification</h3>
-	<a href="index.php?displayby=classification&displayvalue=soft">Soft Cheese</a>
+	<a href="<?php echo BASE_URL;?>index.php?displayby=classification&displayvalue=hard">Hard</a>
 	<br />
-	<a href="index.php?displayby=classification&displayvalue=hard">Hard Cheese</a>
+	<a href="<?php echo BASE_URL;?>index.php?displayby=classification&displayvalue=semi-hard">Semi-Hard</a>
 	<br />
-	<a href="index.php?displayby=classification&displayvalue=blue">Blue Cheese</a>
+	<a href="<?php echo BASE_URL;?>index.php?displayby=classification&displayvalue=semi-soft">Semi-Soft</a>
+	<br />
+	<a href="<?php echo BASE_URL;?>index.php?displayby=classification&displayvalue=soft">Soft</a>
+	<br />
+	<a href="<?php echo BASE_URL;?>index.php?displayby=classification&displayvalue=blue">Blue</a>
 	<br />
 	<!-- <a href="index.php?displayby=lowshedding&displayvalue=yes">Lowshedding Dogs</a>
 	<br />
@@ -165,13 +170,13 @@ h3{
 	<br /> -->
 
 	<h3>Filter by an Age</h3>
-	<a href="index.php?displayby=age&min=1&max=4">1-4 Months</a>
+	<a href="<?php echo BASE_URL;?>index.php?displayby=age&min=1&max=4">1-4 Months</a>
 	<br />
-	<a href="index.php?displayby=age&min=5&max=14">5-14 Months</a>
+	<a href="<?php echo BASE_URL;?>index.php?displayby=age&min=5&max=14">5-14 Months</a>
 	<br />
-	<a href="index.php?displayby=age&min=15&max=24">15-24 Months</a>
+	<a href="<?php echo BASE_URL;?>index.php?displayby=age&min=15&max=24">15-24 Months</a>
 	<br />
-	<a href="index.php?displayby=age&min=25&max=52">25-52 Months</a>
+	<a href="<?php echo BASE_URL;?>index.php?displayby=age&min=25&max=52">25-52 Months</a>
 	<br />
 	<!-- <a href="index.php?displayby=intelligence&min=7&max=10">Smart Dogs</a>
 	<br /> -->

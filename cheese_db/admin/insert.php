@@ -1,6 +1,6 @@
 <?php
-include("header.php");
-include("_functions.php")
+include("../header.php");
+include("../includes/_functions.php");
 ?>
 <div id="results">
 	<h2>Insert</h2>
@@ -10,6 +10,7 @@ include("_functions.php")
 		$cheese = $_POST['cheese'];
 		$classification = $_POST['classification'];
 		$age = $_POST['age'];
+		$price = (float) $_POST['price'];
 		$type = $_POST['type'];
 		$country = $_POST['country'];
 		$description = $_POST['description'];
@@ -31,6 +32,9 @@ include("_functions.php")
 		$msgPreError = "<div class=\"alert alert-danger\" role=\"alert\">";
 		$msgPreSuccess = "<div class=\"alert alert-success\" role=\"alert\">";
 		$msgPost = "</div>";
+
+
+
 		if ((strlen($cheese) < 3) || (strlen($cheese) > 20)) {
 			$valid = 0;
 			// specific message
@@ -49,19 +53,19 @@ include("_functions.php")
 			$msgSuccess = "Success! Form data has been stored.";
 			$uniqidFileName = "image_" . uniqid() . ".jpg";
 
-			if (move_uploaded_file($_FILES['myfile']['tmp_name'], "images/originals/" . $uniqidFileName)) {
+			if (move_uploaded_file($_FILES['myfile']['tmp_name'], "../images/originals/" . $uniqidFileName)) {
 
-				$thisFile = "images/originals/" . $uniqidFileName;
+				$thisFile = "../images/originals/" . $uniqidFileName;
 
-				createImageCopy($thisFile,  "images/display/", 400);
-				createImageCopy($thisFile,  "images/thumbs100/", 100);
-				createImageCopy($thisFile,  "images/thumbs150/", 150);
-				createImageCopy($thisFile,  "images/thumbs200/", 200);
-				createSquareImageCopy($thisFile, "images/squares50/", 50);
-				createSquareImageCopy($thisFile, "images/squares80/", 80);
-				createSquareImageCopy($thisFile, "images/squares100/", 100);
+				createImageCopy($thisFile,  "../images/display/", 400);
+				createImageCopy($thisFile,  "../images/thumbs100/", 100);
+				createImageCopy($thisFile,  "../images/thumbs150/", 150);
+				createImageCopy($thisFile,  "../images/thumbs200/", 200);
+				createSquareImageCopy($thisFile, "../images/squares50/", 50);
+				createSquareImageCopy($thisFile, "../images/squares80/", 80);
+				createSquareImageCopy($thisFile, "../images/squares100/", 100);
 
-				mysqli_query($con, "INSERT INTO cheese_db(cheese, classification, age, type, country, description, image_file) VALUES('$cheese','$classification','$age','$type','$country','$description','$uniqidFileName')") or die(mysqli_error($con));
+				mysqli_query($con, "INSERT INTO cheese_db(cheese, classification, age, price, type, country, description, image_file) VALUES('$cheese','$classification','$age','$price','$type','$country','$description','$uniqidFileName')") or die(mysqli_error($con));
 
 				echo "<h4 style=\"color:green;\">Upload Successful.<br /></h4>";
 			} else {
@@ -113,13 +117,22 @@ include("_functions.php")
 		<div class="form-group">
 			<label for="age">Age (# months):</label>
 			<input type="number" name="age" class="form-control" value="<?php if ($age) {
-																				echo $age;
-																			} ?>">
+																			echo $age;
+																		} ?>">
 			<?php if ($valFNameMsg) {
 				echo $msgPreError . $valFNameMsg . $msgPost;
 			} ?>
 		</div>
 
+		<div class="form-group">
+			<label for="price">Price $/Lb:</label>
+			<input type="number" step="0.01" min="0" name="price" class="form-control" value="<?php if ($price) {
+																									echo $price;
+																								} ?>">
+			<?php if ($valFNameMsg) {
+				echo $msgPreError . $valFNameMsg . $msgPost;
+			} ?>
+		</div>
 
 
 
@@ -425,6 +438,6 @@ include("_functions.php")
 			echo $msgPreSuccess . $msgSuccess . $msgPost;
 		} ?>
 	</form>
-	<?php
-	include("footer.php");
-	?>
+    <?php
+    include("../footer.php");
+    ?>

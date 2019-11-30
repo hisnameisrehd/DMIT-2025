@@ -12,7 +12,7 @@ while($row = mysqli_fetch_array($randomCheese)){
     $cheese = $row['cheese'];
     $cid = $row['cid'];
     $imageFile = $row['image_file'];
-    echo "<a href=\"cheese.php?cid=$cid\"><img src=\"images/thumbs100/$imageFile\"><br/>$cheese</a>" . "<br />";
+    echo "<a href=\"" . BASE_URL . "cheese.php?cid=$cid\"><img src=\"" . BASE_URL . "images/thumbs100/$imageFile\"><br/>$cheese</a>" . "<br />";
 }
 
 // echo "<h3>Random Cheese from Blue Cheese</h3>";
@@ -34,7 +34,7 @@ $popularCD = mysqli_query($con, "SELECT * FROM cheese_db GROUP BY type ORDER BY 
 while($row = mysqli_fetch_array($popularCD)){
     $type = $row['type'];
     $cid = $row['cid'];
-    echo "<a href=\"index.php?displayby=type&displayvalue=$type\">$type</a>" . "<br />";
+    echo "<a href=\"" . BASE_URL . "index.php?displayby=type&displayvalue=$type\">$type</a>" . "<br />";
 }
 
 
@@ -47,7 +47,7 @@ while($row = mysqli_fetch_array($randomCheese)){
     $cheese = $row['cheese'];
     $cid = $row['cid'];
     $imageFile = $row['image_file'];
-    echo "<a href=\"cheese.php?cid=$cid\"><img src=\"images/thumbs100/$imageFile\"><br/>$cheese</a>" . "<br />";
+    echo "<a href=\"" . BASE_URL . "cheese.php?cid=$cid\"><img src=\"" . BASE_URL . "images/thumbs100/$imageFile\"><br/>$cheese</a>" . "<br />";
 }
 ///////////////////////////////////////
 
@@ -78,7 +78,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     if ($row['first_char'] != $current_char) {
         $current_char = $row['first_char'];
 		$thisChar = strtoupper($current_char);
-        echo "<a href=\"index.php?displayby=cheese&displayvalue=$thisChar%\">$thisChar</a> | ";
+        echo "<a href=\"" . BASE_URL . "index.php?displayby=cheese&displayvalue=$thisChar%\">$thisChar</a> | ";
     }  
 }
 
