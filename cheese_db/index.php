@@ -1,5 +1,5 @@
 <?php
-include("header.php");
+include("includes/header.php");
 ?>
 
 <div id="results">
@@ -100,6 +100,6 @@ while ($row = mysqli_fetch_array( $result )){
 
 
 <?php
-include("footer.php");
+include("includes/footer.php");
 ?>
 

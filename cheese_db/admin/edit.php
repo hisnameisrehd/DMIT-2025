@@ -1,5 +1,5 @@
 <?php
-include("../header.php");
+include("../includes/header.php");
 include("../includes/_functions.php");
 ?>
 <div id="results">
@@ -475,5 +475,5 @@ include("../includes/_functions.php");
 
 
     <?php
-    include("../footer.php");
+    include("../includes/footer.php");
     ?>
