@@ -191,41 +191,47 @@ include("mysql_connect.php");
 	<br /> -->
 			<h3>Filter by Price range: </h3>
 			<!-- <p>This would be great for price ranges</p> -->
+			<?php
+			$price_min = $_GET['min'];
+			$price_max = $_GET['max'];
+			?>
 
 			<form method="get" action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
-			<style>
-			.custom-textbox {
-				border: none;
-				margin-top: -0.4rem;
-				background: lightgoldenrodyellow;
-			}
-			</style>
+				<style>
+					.custom-textbox {
+						border: none;
+						margin-top: -0.4rem;
+						background: lightgoldenrodyellow;
+					}
+				</style>
 				<input type="text" name="displayby" value="price" hidden>
-				<input type="range" name="min" min="0" max="125" onchange="updateTextMin(this.value);">
-				<input type="range" name="max" min="0" max="125" onchange="updateTextMax(this.value);">
+				<input type="range" name="min" min="1" max="100" value="<?php if ($price_min) {
+																			echo $price_min;
+																		} ?>" onchange="updateTextMin(this.value);">
+				<input type="range" name="max" min="1" max="100" value="<?php if ($price_max) {
+																			echo $price_max;
+																		} ?>" onchange="updateTextMax(this.value);">
 				<div style="display:flex">
 					<label style="padding:0 0.5rem;" for="textMin">Min $ </label>
-				<input class="custom-textbox" style="width:2rem;margin-right:0.2rem;" type="text" id="textMin" value="" readonly>
+					<input class="custom-textbox" style="width:2rem;margin-right:0.2rem;" type="text" id="textMin" value="<?php if ($price_min) {
+																																echo $price_min;
+																															} ?>" readonly>
 					<label style="padding:0 0.5rem;" for="textMax">Max $ </label>
-				<input class="custom-textbox" style="width:2rem;" type="text" id="textMax" value="" readonly>
+					<input class="custom-textbox" style="width:2rem;" type="text" id="textMax" value="<?php if ($price_max) {
+																											echo $price_max;
+																										} ?>" readonly>
 				</div>
 				<br />
 				<input type="submit">
 			</form>
-<script>
-	function updateTextMin(val) {
-          document.getElementById('textMin').value=val; 
-        }
-		function updateTextMax(val) {
-          document.getElementById('textMax').value=val; 
-        }
-	</script>
-			<?php
-			//if not set we will give this a default value
-			$price_min = $_GET['min'];
-			$price_max = $_GET['max'];
-			// echo $blog_id;
-				echo "<h1>$price_min, $price_max</h1>";
-			// echo "<h1>$blog_id</h1>";
-			?>
+			<script>
+				function updateTextMin(val) {
+					document.getElementById('textMin').value = val;
+				}
+
+				function updateTextMax(val) {
+					document.getElementById('textMax').value = val;
+				}
+			</script>
+
 		</div>
