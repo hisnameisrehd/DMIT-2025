@@ -1,4 +1,7 @@
 <?php
+session_start();
+
+
 // Connect to DB: Since all files depend on this, this will be included in our header, which is then included in all files.
 $con = mysqli_connect("localhost", "npeters5", "AIMFwNnBQnioFYc", "npeters5_dmit2025");
 
