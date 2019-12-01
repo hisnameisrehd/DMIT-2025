@@ -29,4 +29,3 @@ if (mysqli_connect_errno()) {
 
   // Your App Name
   define("APP_NAME", "Cheeses of the World");
-?>

@@ -1,9 +1,9 @@
 </div>
 <div id="widgets">
-<?php
-include("widgets.php");
+    <?php
+    include("widgets.php");
 
-?>
+    ?>
 
 </div>
 
@@ -11,4 +11,5 @@ include("widgets.php");
 <br style="clear:both;" />
 </div> <!-- /container -->
 </body>
+
 </html>

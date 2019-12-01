@@ -37,25 +37,25 @@ include("../includes/header.php");
 	<br />
 	<br />
 
-<form id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-	<div class="form-group">
-		<label for="username">Username:</label>
-		<input class="form-control" type="text" name="username">
-	</div>
-	<div class="form-group">
-		<label for="password">Password:</label>
-		<input class="form-control" type="password" name="password">
-	</div>
-	<div class="form-group">
-		<label for="submit">&nbsp;</label>
-		<input type="submit" name="mysubmit" class="btn btn-info" value="Submit">
-	</div>
+	<form id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+		<div class="form-group">
+			<label for="username">Username:</label>
+			<input class="form-control" type="text" name="username">
+		</div>
+		<div class="form-group">
+			<label for="password">Password:</label>
+			<input class="form-control" type="password" name="password">
+		</div>
+		<div class="form-group">
+			<label for="submit">&nbsp;</label>
+			<input type="submit" name="mysubmit" class="btn btn-info" value="Submit">
+		</div>
+		<?php
+		if ($msg) {
+			echo "\n\t<div class=\"alert alert-info\">$msg</div>";
+		}
+		?>
+	</form>
 	<?php
-	if ($msg) {
-		echo "\n\t<div class=\"alert alert-info\">$msg</div>";
-	}
+	include("../includes/footer.php");
 	?>
-</form>
-<?php
-include("../includes/footer.php");
-?>

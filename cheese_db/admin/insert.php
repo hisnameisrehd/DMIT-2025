@@ -88,7 +88,7 @@ include("../includes/_functions.php");
 				createSquareImageCopy($thisFile, "../images/squares100/", 100);
 
 				mysqli_query($con, "INSERT INTO cheese_db(cheese, classification, age, price, type, country, description, image_file) VALUES('$cheese','$classification','$age','$price','$type','$country','$description','$uniqidFileName')") or die(mysqli_error($con));
-				
+
 				$last_id = mysqli_insert_id($con);
 				echo "<div class=\"row\">";
 				echo "<div class=\"col-8\">";
@@ -109,7 +109,7 @@ include("../includes/_functions.php");
 	?>
 
 	<form id="myform" name="myform" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-	<?php if ($valid == 1) {
+		<?php if ($valid == 1) {
 			echo $msgPreSuccess . $msgSuccess . $msgPost;
 		} ?>
 		<div class="form-group">

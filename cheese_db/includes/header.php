@@ -193,11 +193,11 @@ include("mysql_connect.php");
 			<!-- <p>This would be great for price ranges</p> -->
 			<?php
 			$displayby = $_GET['displayby'];
-				if($displayby == 'price'){
-					echo $displayby;
-					$price_min = $_GET['min'];
-					$price_max = $_GET['max'];
-				}
+			if ($displayby == 'price') {
+				echo $displayby;
+				$price_min = $_GET['min'];
+				$price_max = $_GET['max'];
+			}
 			?>
 
 			<form method="get" action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
