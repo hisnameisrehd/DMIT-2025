@@ -126,8 +126,8 @@ include("../includes/_functions.php");
     // echo "<h1>$cheese</h1>";
     ?>
     <?php if ($valid == 1) {
-                    echo $msgPreSuccess . $msgSuccess . $msgPost;
-                } ?>
+        echo $msgPreSuccess . $msgSuccess . $msgPost;
+    } ?>
     <div class="row">
         <div class="col-9">
             <form id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
@@ -248,7 +248,9 @@ include("../includes/_functions.php");
                         <option value="Burundi">Burundi</option>
                         <option value="Cambodia">Cambodia</option>
                         <option value="Cameroon">Cameroon</option>
-                        <option value="Canada">Canada</option>
+                        <option <?php if (isset($country) && $country == "Canada") {
+                                    echo "selected";
+                                } ?> value="Canada">Canada</option>
                         <option value="Cape Verde">Cape Verde</option>
                         <option value="Cayman Islands">Cayman Islands</option>
                         <option value="Central African Republic">Central African Republic</option>
@@ -268,7 +270,9 @@ include("../includes/_functions.php");
                         <option value="Cuba">Cuba</option>
                         <option value="Cyprus">Cyprus</option>
                         <option value="Czech Republic">Czech Republic</option>
-                        <option value="Denmark">Denmark</option>
+                        <option <?php if (isset($country) && $country == "Denmark") {
+                                    echo "selected";
+                                } ?> value="Denmark">Denmark</option>
                         <option value="Djibouti">Djibouti</option>
                         <option value="Dominica">Dominica</option>
                         <option value="Dominican Republic">Dominican Republic</option>
@@ -283,7 +287,9 @@ include("../includes/_functions.php");
                         <option value="Faroe Islands">Faroe Islands</option>
                         <option value="Fiji">Fiji</option>
                         <option value="Finland">Finland</option>
-                        <option value="France">France</option>
+                        <option <?php if (isset($country) && $country == "France") {
+                                    echo "selected";
+                                } ?> value="France">France</option>
                         <option value="French Guiana">French Guiana</option>
                         <option value="French Polynesia">French Polynesia</option>
                         <option value="French Southern Territories">French Southern Territories</option>
@@ -317,7 +323,9 @@ include("../includes/_functions.php");
                         <option value="Ireland">Ireland</option>
                         <option value="Isle of Man">Isle of Man</option>
                         <option value="Israel">Israel</option>
-                        <option value="Italy">Italy</option>
+                        <option <?php if (isset($country) && $country == "Italy") {
+                                    echo "selected";
+                                } ?> value="Italy">Italy</option>
                         <option value="Jamaica">Jamaica</option>
                         <option value="Japan">Japan</option>
                         <option value="Jersey">Jersey</option>
@@ -351,7 +359,9 @@ include("../includes/_functions.php");
                         <option value="Mauritania">Mauritania</option>
                         <option value="Mauritius">Mauritius</option>
                         <option value="Mayotte">Mayotte</option>
-                        <option value="Mexico">Mexico</option>
+                        <option <?php if (isset($country) && $country == "Mexico") {
+                                    echo "selected";
+                                } ?> value="Mexico">Mexico</option>
                         <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
                         <option value="Moldova, Republic of">Moldova, Republic of</option>
                         <option value="Monaco">Monaco</option>
@@ -364,7 +374,9 @@ include("../includes/_functions.php");
                         <option value="Namibia">Namibia</option>
                         <option value="Nauru">Nauru</option>
                         <option value="Nepal">Nepal</option>
-                        <option value="Netherlands">Netherlands</option>
+                        <option <?php if (isset($country) && $country == "Netherlands") {
+                                    echo "selected";
+                                } ?> value="Netherlands">Netherlands</option>
                         <option value="Netherlands Antilles">Netherlands Antilles</option>
                         <option value="New Caledonia">New Caledonia</option>
                         <option value="New Zealand">New Zealand</option>
@@ -374,7 +386,9 @@ include("../includes/_functions.php");
                         <option value="Niue">Niue</option>
                         <option value="Norfolk Island">Norfolk Island</option>
                         <option value="Northern Mariana Islands">Northern Mariana Islands</option>
-                        <option value="Norway">Norway</option>
+                        <option <?php if (isset($country) && $country == "Norway") {
+                                    echo "selected";
+                                } ?> value="Norway">Norway</option>
                         <option value="Oman">Oman</option>
                         <option value="Pakistan">Pakistan</option>
                         <option value="Palau">Palau</option>
@@ -413,14 +427,18 @@ include("../includes/_functions.php");
                         <option value="Somalia">Somalia</option>
                         <option value="South Africa">South Africa</option>
                         <option value="South Georgia and The South Sandwich Islands">South Georgia and The South Sandwich Islands</option>
-                        <option value="Spain">Spain</option>
+                        <option <?php if (isset($country) && $country == "Spain") {
+                                    echo "selected";
+                                } ?> value="Spain">Spain</option>
                         <option value="Sri Lanka">Sri Lanka</option>
                         <option value="Sudan">Sudan</option>
                         <option value="Suriname">Suriname</option>
                         <option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
                         <option value="Swaziland">Swaziland</option>
                         <option value="Sweden">Sweden</option>
-                        <option value="Switzerland">Switzerland</option>
+                        <option <?php if (isset($country) && $country == "Switzerland") {
+                                    echo "selected";
+                                } ?> value="Switzerland">Switzerland</option>
                         <option value="Syrian Arab Republic">Syrian Arab Republic</option>
                         <option value="Taiwan, Province of China">Taiwan, Province of China</option>
                         <option value="Tajikistan">Tajikistan</option>
@@ -439,8 +457,12 @@ include("../includes/_functions.php");
                         <option value="Uganda">Uganda</option>
                         <option value="Ukraine">Ukraine</option>
                         <option value="United Arab Emirates">United Arab Emirates</option>
-                        <option value="United Kingdom">United Kingdom</option>
-                        <option value="United States">United States</option>
+                        <option <?php if (isset($country) && $country == "United Kingdom") {
+                                    echo "selected";
+                                } ?> value="United Kingdom">United Kingdom</option>
+                        <option <?php if (isset($country) && $country == "United States") {
+                                    echo "selected";
+                                } ?> value="United States">United States</option>
                         <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
                         <option value="Uruguay">Uruguay</option>
                         <option value="Uzbekistan">Uzbekistan</option>
@@ -459,7 +481,6 @@ include("../includes/_functions.php");
                         echo $msgPreError . $valCountryMsg . $msgPost;
                     } ?>
                 </div>
-
                 <div class="form-group">
                     <label for="description">Description:</label>
                     <textarea name="description" class="form-control"><?php if ($description) {
