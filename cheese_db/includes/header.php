@@ -192,8 +192,12 @@ include("mysql_connect.php");
 			<h3>Filter by Price range: </h3>
 			<!-- <p>This would be great for price ranges</p> -->
 			<?php
-			$price_min = $_GET['min'];
-			$price_max = $_GET['max'];
+			$displayby = $_GET['displayby'];
+				if($displayby == 'price'){
+					echo $displayby;
+					$price_min = $_GET['min'];
+					$price_max = $_GET['max'];
+				}
 			?>
 
 			<form method="get" action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
@@ -207,10 +211,10 @@ include("mysql_connect.php");
 				<input type="text" name="displayby" value="price" hidden>
 				<input type="range" name="min" min="1" max="100" value="<?php if ($price_min) {
 																			echo $price_min;
-																		} ?>" onchange="updateTextMin(this.value);">
+																		} ?>" onmousemove="updateTextMin(this.value);">
 				<input type="range" name="max" min="1" max="100" value="<?php if ($price_max) {
 																			echo $price_max;
-																		} ?>" onchange="updateTextMax(this.value);">
+																		} ?>" onmousemove="updateTextMax(this.value);">
 				<div style="display:flex">
 					<label style="padding:0 0.5rem;" for="textMin">Min $ </label>
 					<input class="custom-textbox" style="width:2rem;margin-right:0.2rem;" type="text" id="textMin" value="<?php if ($price_min) {

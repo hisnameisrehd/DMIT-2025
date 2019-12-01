@@ -1,12 +1,12 @@
 <?php
-    session_start();
-	if (isset($_SESSION['PHP_Test_Secure'])) {
-		// echo "Logged In.";
-	} else {
-		//when using redirect, make sure that everything else works first. If not, remove redirect to debug.
-		// echo "Not Logged In.";
-		header("Location:login.php");
-	}
+session_start();
+if (isset($_SESSION['PHP_Test_Secure'])) {
+	// echo "Logged In.";
+} else {
+	//when using redirect, make sure that everything else works first. If not, remove redirect to debug.
+	// echo "Not Logged In.";
+	header("Location:login.php");
+}
 include("../includes/header.php");
 include("../includes/_functions.php");
 ?>
@@ -30,12 +30,12 @@ include("../includes/_functions.php");
 		// Validation Rule for File Type
 		if ($_FILES['myfile']['type'] != "image/jpeg") {
 			$valid = 0;
-			$valMessage .= "Not a JPG image.<br />";
+			$valImgMsg .= "Not a JPG image.";
 		}
 		// Validation Rule for File Size
 		if ($_FILES['myfile']['size'] > (8 * 1024 * 1024)) {
 			$valid = 0;
-			$valMessage .= "File is too large.<br />";
+			$valImgMsg .= "File is too large.";
 		}
 		$msgPreError = "<div class=\"alert alert-danger\" role=\"alert\">";
 		$msgPreSuccess = "<div class=\"alert alert-success\" role=\"alert\">";
@@ -46,12 +46,22 @@ include("../includes/_functions.php");
 		if ((strlen($cheese) < 3) || (strlen($cheese) > 20)) {
 			$valid = 0;
 			// specific message
-			$valFNameMsg = "Please enter a cheese between 3 and 20 characters.";
+			$valCheeseMsg = "Please enter a cheese between 3 and 20 characters.";
+		}
+		if ($classification == "") {
+			$valid = 0;
+			// specific message
+			$valClassMsg = "Please select a classification.";
 		}
 		if ((strlen($description) < 20) || (strlen($description) > 512)) {
 			$valid = 0;
 			// specific message
 			$valDescMsg = "Please enter a description between 20 and 512 characters.";
+		}
+		if ($type == "") {
+			$valid = 0;
+			// specific message
+			$valTypeMsg = "Please select a type of milk.";
 		}
 
 
@@ -79,8 +89,6 @@ include("../includes/_functions.php");
 			} else {
 				echo "<h3 style=\"color:red;\">ERROR</h3>";
 			}
-		} else {
-			echo "<h4 style=\"color:red;\">" . $valMessage . "</h4>";
 		}
 	}
 	?>
@@ -91,8 +99,8 @@ include("../includes/_functions.php");
 			<input type="text" name="cheese" class="form-control" value="<?php if ($cheese) {
 																				echo $cheese;
 																			} ?>">
-			<?php if ($valFNameMsg) {
-				echo $msgPreError . $valFNameMsg . $msgPost;
+			<?php if ($valCheeseMsg) {
+				echo $msgPreError . $valCheeseMsg . $msgPost;
 			} ?>
 		</div>
 
@@ -119,6 +127,9 @@ include("../includes/_functions.php");
 			Blue:<input type="radio" value="Blue" name="classification" <?php if (isset($classification) && $classification == "Blue") {
 																			echo "checked";
 																		} ?>><br />
+			<?php if ($valClassMsg) {
+				echo $msgPreError . $valClassMsg . $msgPost;
+			} ?>
 		</div>
 
 
@@ -127,9 +138,6 @@ include("../includes/_functions.php");
 			<input type="number" name="age" class="form-control" value="<?php if ($age) {
 																			echo $age;
 																		} ?>">
-			<?php if ($valFNameMsg) {
-				echo $msgPreError . $valFNameMsg . $msgPost;
-			} ?>
 		</div>
 
 		<div class="form-group">
@@ -137,18 +145,12 @@ include("../includes/_functions.php");
 			<input type="number" step="0.01" min="0" name="price" class="form-control" value="<?php if ($price) {
 																									echo $price;
 																								} ?>">
-			<?php if ($valFNameMsg) {
-				echo $msgPreError . $valFNameMsg . $msgPost;
-			} ?>
 		</div>
-
-
-
-
 
 		<div class="form-group">
 			<label for="type">Milk Type:</label>
 			<select class="form-control" name="type">
+				<option value="">Please select a type</option>
 				<option <?php if (isset($type) && $type == "Buffalo") {
 							echo "selected";
 						} ?> value="Buffalo">Buffalo</option>
@@ -162,7 +164,11 @@ include("../includes/_functions.php");
 							echo "selected";
 						} ?> value="Sheep">Sheep</option>
 			</select>
+			<?php if ($valTypeMsg) {
+				echo $msgPreError . $valTypeMsg . $msgPost;
+			} ?>
 		</div>
+
 		<div class="form-group">
 			<label for="country">Country</label>
 			<select id="country" name="country" class="form-control">
@@ -436,7 +442,9 @@ include("../includes/_functions.php");
 		<div class="form-group">
 			<label for="myfile">file</label>
 			<input type="file" name="myfile" class="form-control">
-
+			<?php if ($valImgMsg) {
+				echo $msgPreError . $valImgMsg . $msgPost;
+			} ?>
 		</div>
 		<div class="form-group">
 			<label for="submit">&nbsp;</label>
@@ -446,6 +454,6 @@ include("../includes/_functions.php");
 			echo $msgPreSuccess . $msgSuccess . $msgPost;
 		} ?>
 	</form>
-    <?php
-    include("../includes/footer.php");
-    ?>
+	<?php
+	include("../includes/footer.php");
+	?>

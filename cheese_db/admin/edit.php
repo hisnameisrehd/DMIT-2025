@@ -46,12 +46,22 @@ include("../includes/_functions.php");
         if ((strlen($cheese) < 3) || (strlen($cheese) > 20)) {
             $valid = 0;
             // specific message
-            $valFNameMsg = "Please enter a cheese between 3 and 20 characters.";
+            $valCheeseMsg = "Please enter a cheese between 3 and 20 characters.";
+        }
+        if ($classification == "") {
+            $valid = 0;
+            // specific message
+            $valClassMsg = "Please select a classification.";
         }
         if ((strlen($description) < 20) || (strlen($description) > 512)) {
             $valid = 0;
             // specific message
             $valDescMsg = "Please enter a description between 20 and 512 characters.";
+        }
+        if ($type == "") {
+            $valid = 0;
+            // specific message
+            $valTypeMsg = "Please select a type of milk.";
         }
 
         // success. if our boolean is still 1 then user form data is good.
@@ -119,8 +129,8 @@ include("../includes/_functions.php");
                     <input type="text" name="cheese" class="form-control" value="<?php if ($cheese) {
                                                                                         echo $cheese;
                                                                                     } ?>">
-                    <?php if ($valFNameMsg) {
-                        echo $msgPreError . $valFNameMsg . $msgPost;
+                    <?php if ($valCheeseMsg) {
+                        echo $msgPreError . $valCheeseMsg . $msgPost;
                     } ?>
                 </div>
 
@@ -147,6 +157,9 @@ include("../includes/_functions.php");
                     Blue:<input type="radio" value="Blue" name="classification" <?php if (isset($classification) && $classification == "Blue") {
                                                                                     echo "checked";
                                                                                 } ?>><br />
+                    <?php if ($valClassMsg) {
+                        echo $msgPreError . $valClassMsg . $msgPost;
+                    } ?>
                 </div>
 
 
@@ -155,9 +168,6 @@ include("../includes/_functions.php");
                     <input type="number" name="age" class="form-control" value="<?php if ($age) {
                                                                                     echo $age;
                                                                                 } ?>">
-                    <?php if ($valFNameMsg) {
-                        echo $msgPreError . $valFNameMsg . $msgPost;
-                    } ?>
                 </div>
 
                 <div class="form-group">
@@ -165,18 +175,12 @@ include("../includes/_functions.php");
                     <input type="number" step="0.01" min="0.00" name="price" class="form-control" value="<?php if ($price) {
                                                                                                                 echo $price;
                                                                                                             } ?>">
-                    <?php if ($valFNameMsg) {
-                        echo $msgPreError . $valFNameMsg . $msgPost;
-                    } ?>
                 </div>
-
-
-
-
 
                 <div class="form-group">
                     <label for="type">Milk Type:</label>
                     <select class="form-control" name="type">
+                        <option value="">Please select a type</option>
                         <option <?php if (isset($type) && $type == "Buffalo") {
                                     echo "selected";
                                 } ?> value="Buffalo">Buffalo</option>
@@ -190,7 +194,11 @@ include("../includes/_functions.php");
                                     echo "selected";
                                 } ?> value="Sheep">Sheep</option>
                     </select>
+                    <?php if ($valTypeMsg) {
+                        echo $msgPreError . $valTypeMsg . $msgPost;
+                    } ?>
                 </div>
+
                 <div class="form-group">
                     <label for="country">Country</label>
                     <select id="country" name="country" class="form-control">
@@ -441,17 +449,6 @@ include("../includes/_functions.php");
                     </select>
                 </div>
 
-
-
-
-
-
-
-
-
-
-
-
                 <div class="form-group">
                     <label for="description">Description:</label>
                     <textarea name="description" class="form-control"><?php if ($description) {
@@ -464,7 +461,7 @@ include("../includes/_functions.php");
 
                 <div class="form-group">
                     <label for="submit">&nbsp;</label>
-                    <input type="submit" name="submit" class="btn btn-warning" value="Submit">
+                    <input type="submit" name="submit" class="btn btn-warning" value="Update">
                     <a class="btn btn-danger del" style="font-size:1rem;" href="delete.php?id=<?php echo $cid ?>">Delete</a>
                     <script>
                         $(document).ready(function() {
@@ -482,11 +479,11 @@ include("../includes/_functions.php");
             </form>
         </div>
         <div class="col-3" style="height:685px;overflow:scroll;overflow-y:scroll;overflow-x:hidden;">
-        <style>
-            .edit-link img:hover {
-                box-shadow: 0 0 5px 0 blue;
-            }
-        </style>
+            <style>
+                .edit-link img:hover {
+                    box-shadow: 0 0 5px 0 blue;
+                }
+            </style>
             <?php echo $editLinks; ?>
         </div>
     </div>
