@@ -63,7 +63,11 @@ include("../includes/_functions.php");
 			// specific message
 			$valTypeMsg = "Please select a type of milk.";
 		}
-
+		if ($country == "") {
+			$valid = 0;
+			// specific message
+			$valCountryMsg = "Please select a country.";
+		}
 
 
 
@@ -84,8 +88,19 @@ include("../includes/_functions.php");
 				createSquareImageCopy($thisFile, "../images/squares100/", 100);
 
 				mysqli_query($con, "INSERT INTO cheese_db(cheese, classification, age, price, type, country, description, image_file) VALUES('$cheese','$classification','$age','$price','$type','$country','$description','$uniqidFileName')") or die(mysqli_error($con));
-
-				echo "<h4 style=\"color:green;\">Upload Successful.<br /></h4>";
+				
+				$last_id = mysqli_insert_id($con);
+				echo "<div class=\"row\">";
+				echo "<div class=\"col-8\">";
+				echo "<h4 style=\"color:green;\">Upload Successful.</h4>";
+				echo "<p>...Click the image to view details <strong>--></strong></p>";
+				echo "</div>";
+				echo "<div class=\"col-4\">";
+				echo "\n<a class=\"edit-link\" id=\"style-links\" href=\"../cheese.php?cid=$last_id\">
+				<img src=\"../images/thumbs150/$uniqidFileName\" alt=\"thumbnail\" /></a>";
+				echo "</div>";
+				echo "</div>";
+				echo "<br />";
 			} else {
 				echo "<h3 style=\"color:red;\">ERROR</h3>";
 			}
@@ -94,6 +109,9 @@ include("../includes/_functions.php");
 	?>
 
 	<form id="myform" name="myform" method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+	<?php if ($valid == 1) {
+			echo $msgPreSuccess . $msgSuccess . $msgPost;
+		} ?>
 		<div class="form-group">
 			<label for="cheese">Cheese:</label>
 			<input type="text" name="cheese" class="form-control" value="<?php if ($cheese) {
@@ -172,6 +190,7 @@ include("../includes/_functions.php");
 		<div class="form-group">
 			<label for="country">Country</label>
 			<select id="country" name="country" class="form-control">
+				<option value="">Please select a country</option>
 				<option value="Afghanistan">Afghanistan</option>
 				<option value="Åland Islands">Åland Islands</option>
 				<option value="Albania">Albania</option>
@@ -417,6 +436,9 @@ include("../includes/_functions.php");
 				<option value="Zambia">Zambia</option>
 				<option value="Zimbabwe">Zimbabwe</option>
 			</select>
+			<?php if ($valCountryMsg) {
+				echo $msgPreError . $valCountryMsg . $msgPost;
+			} ?>
 		</div>
 
 
@@ -450,9 +472,6 @@ include("../includes/_functions.php");
 			<label for="submit">&nbsp;</label>
 			<input type="submit" name="submit" class="btn btn-info" value="Submit">
 		</div>
-		<?php if ($valid == 1) {
-			echo $msgPreSuccess . $msgSuccess . $msgPost;
-		} ?>
 	</form>
 	<?php
 	include("../includes/footer.php");

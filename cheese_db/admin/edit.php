@@ -63,7 +63,11 @@ include("../includes/_functions.php");
             // specific message
             $valTypeMsg = "Please select a type of milk.";
         }
-
+        if ($country == "") {
+            $valid = 0;
+            // specific message
+            $valCountryMsg = "Please select a country.";
+        }
         // success. if our boolean is still 1 then user form data is good.
         if ($valid == 1) {
             $cheese = $_POST['cheese'];
@@ -121,6 +125,9 @@ include("../includes/_functions.php");
     // echo "<h1>$cid</h1>";
     // echo "<h1>$cheese</h1>";
     ?>
+    <?php if ($valid == 1) {
+                    echo $msgPreSuccess . $msgSuccess . $msgPost;
+                } ?>
     <div class="row">
         <div class="col-9">
             <form id="myform" name="myform" method="post" action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
@@ -202,6 +209,7 @@ include("../includes/_functions.php");
                 <div class="form-group">
                     <label for="country">Country</label>
                     <select id="country" name="country" class="form-control">
+                        <option value="">Please select a country</option>
                         <option value="Afghanistan">Afghanistan</option>
                         <option value="Åland Islands">Åland Islands</option>
                         <option value="Albania">Albania</option>
@@ -447,6 +455,9 @@ include("../includes/_functions.php");
                         <option value="Zambia">Zambia</option>
                         <option value="Zimbabwe">Zimbabwe</option>
                     </select>
+                    <?php if ($valCountryMsg) {
+                        echo $msgPreError . $valCountryMsg . $msgPost;
+                    } ?>
                 </div>
 
                 <div class="form-group">
@@ -473,9 +484,6 @@ include("../includes/_functions.php");
                         });
                     </script>
                 </div>
-                <?php if ($valid == 1) {
-                    echo $msgPreSuccess . $msgSuccess . $msgPost;
-                } ?>
             </form>
         </div>
         <div class="col-3" style="height:685px;overflow:scroll;overflow-y:scroll;overflow-x:hidden;">

@@ -1,5 +1,5 @@
 <?php
-    include("../mysql_connect.php");// here we include the connection script; since this file(header.php) is included at the top of every page we make, the connection will then also be included. Also, config options like BASE_URL are also available to us.
+    include("../includes/mysql_connect.php");// here we include the connection script; since this file(header.php) is included at the top of every page we make, the connection will then also be included. Also, config options like BASE_URL are also available to us.
 
     session_start();
 	if (isset($_SESSION['PHP_Test_Secure'])) {
