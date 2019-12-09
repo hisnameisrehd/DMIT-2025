@@ -2,7 +2,7 @@
 include("includes/header.php");
 ?>
 
-<div class="row container">
+<div class="row container mt-3">
 <div class="col-8">
 
 	<h2>Explore the Many Cheeses!</h2><br />
