@@ -1,15 +1,12 @@
 </div>
-<div id="widgets">
+<div class="col-4">
     <?php
     include("widgets.php");
 
     ?>
 
 </div>
-
-
-<br style="clear:both;" />
-</div> <!-- /container -->
+</div> <!-- /row -->
 </body>
 
 </html>

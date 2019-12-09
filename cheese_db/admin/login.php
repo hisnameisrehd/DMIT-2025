@@ -31,7 +31,9 @@ include("../includes/header.php");
 // echo "$username_good, $pw_enc";
 
 ?>
-<div id="results">
+
+<div class="row container">
+<div class="col-8">
 
 	<h1>Login</h1>
 	<br />

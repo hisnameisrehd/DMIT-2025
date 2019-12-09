@@ -1,56 +1,75 @@
 
 
+
+
+
+
+<p>
+  <button id="filter-button" class="btn btn-primary" data-toggle="collapse" type="button" data-target="#filterMilk" aria-expanded="false" aria-controls="filterMilk">View Milk</button>
+</p>
+
+<div class="collapse" id="filterMilk">
 <?php
-// all these will be completed in class
 
-
-///////////////////////////////////////// RANDOM
-echo "<h3>Random Cheese</h3>";
-
-$randomCheese = mysqli_query($con, "SELECT * FROM cheese_db ORDER BY RAND() LIMIT 1");
-while ($row = mysqli_fetch_array($randomCheese)) {
-    $cheese = $row['cheese'];
-    $cid = $row['cid'];
-    $imageFile = $row['image_file'];
-    echo "<a href=\"" . BASE_URL . "cheese.php?cid=$cid\"><img src=\"" . BASE_URL . "images/thumbs100/$imageFile\"><br/>$cheese</a>" . "<br />";
-}
-
-// echo "<h3>Random Cheese from Blue Cheese</h3>";
-
-// $randomCheese = mysqli_query($con, "SELECT * FROM cheese_db WHERE classification LIKE 'blue' ORDER BY RAND() LIMIT 1");
-// while($row = mysqli_fetch_array($randomCheese)){
-//     $cheese = $row['cheese'];
-//     $cid = $row['cid'];
-//     $imageFile = $row['image_file'];
-//     echo "<a href=\"cheese.php?cid=$cid\"><img src=\"images/thumbs100/$imageFile\"><br/>$cheese</a>" . "<br />";
-// }
-
-///////////////////////////////////////
-
-
-echo "<h3>Milk Types</h3>";
+echo "<h5>Milk Types</h5>";
 
 $popularCD = mysqli_query($con, "SELECT * FROM cheese_db GROUP BY type ORDER BY Count(*) DESC LIMIT 5");
 while ($row = mysqli_fetch_array($popularCD)) {
-    $type = $row['type'];
-    $cid = $row['cid'];
-    echo "<a href=\"" . BASE_URL . "index.php?displayby=type&displayvalue=$type\">$type</a>" . "<br />";
+$type = $row['type'];
+$cid = $row['cid'];
+echo "<a class=\"dropdown-item\" href=\"" . BASE_URL . "index.php?displayby=type&displayvalue=$type\">$type</a>" . "<br />";
 }
+?>
+</div>
 
 
-///////////////////////////////////////// POPULAR DOGS
-echo "<h3>Most Viewed Cheese</h3>";
+<p>
+    <button id="filter-button" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#filterClass" aria-expanded="false" aria-controls="filterClass">View Class</button>
+</p>
 
-//// there is an UPDATE query in index.php that sets this column value, and we just ORDER BY popularity DESC here to get most popular views
-$randomCheese = mysqli_query($con, "SELECT * FROM cheese_db ORDER BY viewed DESC LIMIT 1");
-while ($row = mysqli_fetch_array($randomCheese)) {
-    $cheese = $row['cheese'];
-    $cid = $row['cid'];
-    $imageFile = $row['image_file'];
-    echo "<a href=\"" . BASE_URL . "cheese.php?cid=$cid\"><img src=\"" . BASE_URL . "images/thumbs100/$imageFile\"><br/>$cheese</a>" . "<br />";
-}
-///////////////////////////////////////
+<div class="collapse" id="filterClass">
+<h5>Classification</h5>
+<a class="dropdown-item" href="<?php echo BASE_URL; ?>index.php?displayby=classification&displayvalue=hard">Hard</a>
+<br />
+<a class="dropdown-item" href="<?php echo BASE_URL; ?>index.php?displayby=classification&displayvalue=semi-hard">Semi-Hard</a>
+<br />
+<a class="dropdown-item" href="<?php echo BASE_URL; ?>index.php?displayby=classification&displayvalue=semi-soft">Semi-Soft</a>
+<br />
+<a class="dropdown-item" href="<?php echo BASE_URL; ?>index.php?displayby=classification&displayvalue=soft">Soft</a>
+<br />
+<a class="dropdown-item" href="<?php echo BASE_URL; ?>index.php?displayby=classification&displayvalue=blue">Blue</a>
+<br />
+</div>
 
+
+<p>
+  <button id="filter-button" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#filterAge" aria-expanded="false" aria-controls="filterAge">View Age</button>
+</p>
+
+
+    <div class="collapse" id="filterAge">
+    <h5>Filter by an Age</h5>
+<a class="dropdown-item" href="<?php echo BASE_URL; ?>index.php?displayby=age&min=1&max=4">1-4 Months</a>
+<br />
+<a class="dropdown-item" href="<?php echo BASE_URL; ?>index.php?displayby=age&min=5&max=14">5-14 Months</a>
+<br />
+<a class="dropdown-item" href="<?php echo BASE_URL; ?>index.php?displayby=age&min=15&max=24">15-24 Months</a>
+<br />
+<a class="dropdown-item" href="<?php echo BASE_URL; ?>index.php?displayby=age&min=25&max=52">25-52 Months</a>
+<br />
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+<?php
 //////////////////////////////////////// ALPHABETICAL LIST WITH HEADINGS
 // from http://www.webhostingtalk.com/showthread.php?t=717692
 // user "bigfan"
@@ -66,7 +85,7 @@ http://www.geeksengine.com/database/basic-select/column-alias.php
 ///////////////////////////////////////////
 
 ////////////////////////////////////////// ALPHABETICAL A - Z LINKS
-echo "<h3>Alphabetical A - Z Links only</h3>";
+echo "<h5>Alphabetical</h5>";
 
 $qry = "SELECT *, LEFT(cheese, 1) AS first_char FROM cheese_db 
         WHERE UPPER(cheese) BETWEEN 'A' AND 'Z'

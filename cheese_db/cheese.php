@@ -4,9 +4,9 @@ include("includes/header.php");
 
 
 
-<div id="results">
+<div class="row container">
+<div class="col-8">
 
-	<h2>Filtered MySQL Query Results</h2>
 	<?php
 
 
@@ -25,7 +25,7 @@ include("includes/header.php");
 	while ($row = mysqli_fetch_array($result)) {
 
 		$cheese = $row['cheese'];
-		echo "<h2>$cheese</h2>";
+		echo "<h2>$cheese</h2><br />";
 		$image_file = $row['image_file'];
 		echo "<img src=\"images/display/$image_file\" /><br />";
 

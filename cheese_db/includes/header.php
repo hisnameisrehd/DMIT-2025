@@ -28,66 +28,47 @@ include("mysql_connect.php");
 
 	<style type="text/css">
 		body {
-			font-family: verdana;
-			font-size: 90%;
-			padding: 20px;
-			background-color: #ccc;
+			display: grid;
+			background: #f2efc7;
+			justify-items: center;
 		}
 
-		#container {
-			width: 1160px;
+		#custom-navbar {
+			background: #9f7e69;
+			border-bottom: 2px solid black;
+		}
+		#custom-dropdown-menu {
+			background: #9f7e69;
+			border-bottom: 2px solid black;
+		}
+		#custom-dropdown-menu a:hover{
+			color: black;
+			font-weight: 700;
+		}
+		#custom-navbar a{
+			color: #fff;
+		}
+		#custom-navbar a:hover{
+			background: #9f7e69;
+		}
+
+		.custom-div {
+			border:2px solid red;
+		}
+
+		.custom-form {
+			font-size: .6rem;
+		}
+
+		.custom-form-input {
+			font-size: 1rem;
+		}
+
+		#filter-button {
+			width: 100%;
 			margin: auto;
-			background-color: #fff;
-			padding: 10px;
-			padding-top: 20px;
-			margin-top: 65px;
-			position: sticky;
-		}
-
-		#links {
-			width: 220px;
-			margin: 10px;
-			padding: 7px;
-
-			float: left;
-
-		}
-
-		#results {
-			width: 624px;
-			margin: 10px;
-			padding: 7px;
-
-			float: left;
-
-
-		}
-
-		/**/
-		#widgets {
-			width: 220px;
-			margin: 10px;
-			padding: 5px;
-
-			float: left;
-
-		}
-
-		#results a,
-		#widgets a {
-			font-size: 11px;
-		}
-
-		h2 {
-			font-family: georgia;
-			color: #444;
-			font-size: 20px;
-		}
-
-		h3 {
-			font-family: georgia;
-			color: #900;
-			font-size: 16px;
+			color: #000;
+			background-color: #d2bba0;
 		}
 
 		.thumb {
@@ -97,14 +78,9 @@ include("mysql_connect.php");
 			float: left;
 			overflow: hidden;
 			font-size: 11px;
-			/* Sexy Thumbnails...but only if you think you are worthy 
-	margin:8px;
-	background-color: #fff;
-	box-shadow: 0px 0px 2px #000;*/
-		}
-
-		.thumb img {
-			/* border: 1px solid #000; */
+			margin: 8px;
+			background-color: #fff;
+			box-shadow: 0px 0px 2px #000;
 		}
 
 		.thumb a {
@@ -114,7 +90,7 @@ include("mysql_connect.php");
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 fixed-top">
+	<nav id="custom-navbar" class="navbar navbar-expand-md mb-4 fixed-top">
 		<a class="navbar-brand" href="<?php echo BASE_URL ?>index.php"><i class="material-icons" style="font-size:36px">home</i></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -127,7 +103,7 @@ include("mysql_connect.php");
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
-					<div class="dropdown-menu" aria-labelledby="dropdown01">
+					<div id="custom-dropdown-menu" class="dropdown-menu" aria-labelledby="dropdown01">
 						<a class="dropdown-item" href="<?php echo BASE_URL ?>admin/insert.php">Insert</a>
 						<a class="dropdown-item" href="<?php echo BASE_URL ?>admin/edit.php">Edit</a>
 					</div>
@@ -146,51 +122,11 @@ include("mysql_connect.php");
 			</ul>
 		</div>
 	</nav>
+	<div style="margin-top: 5rem !important;" class="row mb-3 container custom-div">
+		<div class="col-8 pl-4">
 
-
-	<div id="container">
-
-		<h1><a href="<?php echo BASE_URL ?>index.php">Cheese DB</a></h1>
-		<div id="links">
-			<h2>HTML Links with Query String</h2>
-			<h3>Default: No filter</h3>
-			<a href="<?php echo BASE_URL; ?>index.php">ALL Cheese </a><br />
-
-			<h3>Filter by cheese Classification</h3>
-			<a href="<?php echo BASE_URL; ?>index.php?displayby=classification&displayvalue=hard">Hard</a>
-			<br />
-			<a href="<?php echo BASE_URL; ?>index.php?displayby=classification&displayvalue=semi-hard">Semi-Hard</a>
-			<br />
-			<a href="<?php echo BASE_URL; ?>index.php?displayby=classification&displayvalue=semi-soft">Semi-Soft</a>
-			<br />
-			<a href="<?php echo BASE_URL; ?>index.php?displayby=classification&displayvalue=soft">Soft</a>
-			<br />
-			<a href="<?php echo BASE_URL; ?>index.php?displayby=classification&displayvalue=blue">Blue</a>
-			<br />
-			<!-- <a href="index.php?displayby=lowshedding&displayvalue=yes">Lowshedding Dogs</a>
-	<br />
-	<a href="index.php?displayby=guard&displayvalue=1">Guard Dogs</a>
-	<br />
-	<a href="index.php?displayby=children&displayvalue=yes">Good Dogs w/ Children</a>
-	<br /> -->
-
-			<!-- <h3>Filter by an ID=Value, so 1 result Only</h3> -->
-			<!-- <a href="index.php?displayby=pooch_id&displayvalue=16">Rottweiler</a>
-	<br /> -->
-
-			<h3>Filter by an Age</h3>
-			<a href="<?php echo BASE_URL; ?>index.php?displayby=age&min=1&max=4">1-4 Months</a>
-			<br />
-			<a href="<?php echo BASE_URL; ?>index.php?displayby=age&min=5&max=14">5-14 Months</a>
-			<br />
-			<a href="<?php echo BASE_URL; ?>index.php?displayby=age&min=15&max=24">15-24 Months</a>
-			<br />
-			<a href="<?php echo BASE_URL; ?>index.php?displayby=age&min=25&max=52">25-52 Months</a>
-			<br />
-			<!-- <a href="index.php?displayby=intelligence&min=7&max=10">Smart Dogs</a>
-	<br /> -->
 			<h3>Filter by Price range: </h3>
-			<!-- <p>This would be great for price ranges</p> -->
+			<br />
 			<?php
 			$displayby = $_GET['displayby'];
 			if ($displayby == 'price') {
@@ -200,7 +136,7 @@ include("mysql_connect.php");
 			}
 			?>
 
-			<form method="get" action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
+			<form class="custom-form" method="get" action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
 				<style>
 					.custom-textbox {
 						border: none;
@@ -226,8 +162,36 @@ include("mysql_connect.php");
 																										} ?>" readonly>
 				</div>
 				<br />
-				<input type="submit">
+				<input class="custom-form-input" type="submit">
 			</form>
+		</div>
+		<div class="col-2">
+			<?php
+			echo "<h4>Discover</h4>";
+
+			$randomCheese = mysqli_query($con, "SELECT * FROM cheese_db ORDER BY RAND() LIMIT 1");
+			while ($row = mysqli_fetch_array($randomCheese)) {
+				$cheese = $row['cheese'];
+				$cid = $row['cid'];
+				$imageFile = $row['image_file'];
+				echo "<a href=\"" . BASE_URL . "cheese.php?cid=$cid\"><img src=\"" . BASE_URL . "images/thumbs100/$imageFile\"><br/>$cheese</a>" . "<br />";
+			}
+			?>
+		</div>
+		<div class="col-2">
+			<?php
+			echo "<h4>Favorite</h4>";
+
+			//// there is an UPDATE query in index.php that sets this column value, and we just ORDER BY popularity DESC here to get most popular views
+			$randomCheese = mysqli_query($con, "SELECT * FROM cheese_db ORDER BY viewed DESC LIMIT 1");
+			while ($row = mysqli_fetch_array($randomCheese)) {
+				$cheese = $row['cheese'];
+				$cid = $row['cid'];
+				$imageFile = $row['image_file'];
+				echo "<a href=\"" . BASE_URL . "cheese.php?cid=$cid\"><img src=\"" . BASE_URL . "images/thumbs100/$imageFile\"><br/>$cheese</a>" . "<br />";
+			}
+			?>
+
 			<script>
 				function updateTextMin(val) {
 					document.getElementById('textMin').value = val;
@@ -238,4 +202,6 @@ include("mysql_connect.php");
 				}
 			</script>
 
+
 		</div>
+	</div>

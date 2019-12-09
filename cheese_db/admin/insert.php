@@ -10,7 +10,10 @@ if (isset($_SESSION['PHP_Test_Secure'])) {
 include("../includes/header.php");
 include("../includes/_functions.php");
 ?>
-<div id="results">
+
+<div class="row container">
+<div class="col-8">
+	
 	<h2>Insert</h2>
 
 	<?php
