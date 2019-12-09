@@ -37,23 +37,23 @@ include("mysql_connect.php");
 			background: #9f7e69;
 			border-bottom: 2px solid black;
 		}
+
 		#custom-dropdown-menu {
 			background: #9f7e69;
 			border-bottom: 2px solid black;
 		}
-		#custom-dropdown-menu a:hover{
+
+		#custom-dropdown-menu a:hover {
 			color: black;
 			font-weight: 700;
 		}
-		#custom-navbar a{
+
+		#custom-navbar a {
 			color: #fff;
 		}
-		#custom-navbar a:hover{
-			background: #9f7e69;
-		}
 
-		.custom-div {
-			border:2px solid red;
+		#custom-navbar a:hover {
+			background: #9f7e69;
 		}
 
 		.custom-form {
@@ -85,6 +85,21 @@ include("mysql_connect.php");
 
 		.thumb a {
 			text-decoration: none;
+		}
+
+		.widget-styles {
+			border: 2px solid black;
+			border-radius: 6px;
+			padding: 2rem 1rem 0.5rem 1rem;
+			margin-top: 4rem;
+		}
+
+		.widget-title {
+			margin-top: -3rem;
+			background:	#f2efc7;
+			width: 7.5rem;
+			padding-left: 1rem;
+			padding-right: .5rem;
 		}
 	</style>
 </head>
@@ -122,7 +137,7 @@ include("mysql_connect.php");
 			</ul>
 		</div>
 	</nav>
-	<div style="margin-top: 5rem !important;" class="row mb-3 container custom-div">
+	<div style="margin-top: 5rem !important;" class="row mb-3 container">
 		<div class="col-8 pl-4">
 
 			<h3>Filter by Price range: </h3>
