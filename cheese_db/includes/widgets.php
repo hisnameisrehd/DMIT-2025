@@ -14,8 +14,8 @@
 
 echo "<h5>Milk Types</h5>";
 
-$popularCD = mysqli_query($con, "SELECT * FROM cheese_db GROUP BY type ORDER BY Count(*) DESC LIMIT 5");
-while ($row = mysqli_fetch_array($popularCD)) {
+$popularCheese = mysqli_query($con, "SELECT * FROM cheese_db GROUP BY type ORDER BY Count(*) DESC LIMIT 5");
+while ($row = mysqli_fetch_array($popularCheese)) {
 $type = $row['type'];
 $cid = $row['cid'];
 echo "<a class=\"dropdown-item\" href=\"" . BASE_URL . "index.php?displayby=type&displayvalue=$type\">$type</a>" . "<br />";
