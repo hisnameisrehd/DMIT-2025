@@ -96,7 +96,7 @@ include("mysql_connect.php");
 
 		.widget-title {
 			margin-top: -3rem;
-			background:	#f2efc7;
+			background: #f2efc7;
 			width: 7.5rem;
 			padding-left: 1rem;
 			padding-right: .5rem;
@@ -145,7 +145,7 @@ include("mysql_connect.php");
 			<?php
 			$displayby = $_GET['displayby'];
 			if ($displayby == 'price') {
-				echo $displayby;
+				// echo $displayby;
 				$price_min = $_GET['min'];
 				$price_max = $_GET['max'];
 			}

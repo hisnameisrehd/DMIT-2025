@@ -1,8 +1,8 @@
 </div>
-    <?php
-    include("widgets.php");
+<?php
+include("widgets.php");
 
-    ?>
+?>
 
 </div> <!-- /row -->
 </body>
