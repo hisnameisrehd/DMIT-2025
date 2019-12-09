@@ -6,7 +6,8 @@ include("includes/header.php");
 
 <div class="row container">
 	<div class="col-8">
-
+	<div class="widget-styles">
+	
 		<?php
 
 
@@ -25,7 +26,7 @@ include("includes/header.php");
 		while ($row = mysqli_fetch_array($result)) {
 
 			$cheese = $row['cheese'];
-			echo "<h2>$cheese</h2><br />";
+			echo "<h2 class=\"display-title\">$cheese</h2><br />";
 			$image_file = $row['image_file'];
 			echo "<img src=\"images/display/$image_file\" /><br />";
 
@@ -47,7 +48,7 @@ include("includes/header.php");
 		}
 
 		?>
-
+</div>
 		<?php
 		include("includes/footer.php");
 		?>

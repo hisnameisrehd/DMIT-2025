@@ -4,8 +4,9 @@ include("includes/header.php");
 
 <div class="row container mt-3">
 	<div class="col-8">
-
-		<h2>Explore the Many Cheeses!</h2><br />
+	<div class="widget-styles">
+	
+		<h2 class="display-title">Explore the Many Cheeses!</h2><br />
 		<?php
 
 		// HERE IS THE DEFAULT QUERY: IF NOTHING BELOW THEN THIS QUERY WILL STAND; OTHERWISE, IT WILL BE OVERWRITTEN
@@ -43,6 +44,7 @@ include("includes/header.php");
 			echo "<h1>Nothing to Show</h1>";
 		}
 		// DISPLAY RESULTS: Only relevant results thumbnails should be displayed.
+		
 		while ($row = mysqli_fetch_array($result)) {
 			$cheese = $row['cheese'];
 			$cid = $row['cid'];
@@ -54,7 +56,7 @@ include("includes/header.php");
 		}
 
 		?>
-
+</div>
 
 
 

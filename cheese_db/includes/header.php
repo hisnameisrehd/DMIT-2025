@@ -72,26 +72,35 @@ include("mysql_connect.php");
 		}
 
 		.thumb {
-			width: 122px;
+			width: 115px;
 			padding: 5px;
 			height: 104px;
-			float: left;
 			overflow: hidden;
 			font-size: 11px;
 			margin: 8px;
 			background-color: #fff;
 			box-shadow: 0px 0px 2px #000;
+			display: inline-block;
 		}
 
 		.thumb a {
 			text-decoration: none;
 		}
 
+		.display-title {
+			margin-top: -3.5rem;
+			background:	#f2efc7;
+			display: table;
+			padding-left: 1rem;
+			padding-right: .5rem;
+			margin-bottom: -1rem;
+		}
+
 		.widget-styles {
 			border: 2px solid black;
 			border-radius: 6px;
 			padding: 2rem 1rem 0.5rem 1rem;
-			margin-top: 4rem;
+			margin-top: 2rem;
 		}
 
 		.widget-title {
