@@ -141,6 +141,15 @@ include("mysql_connect.php");
 							BASE_URL .
 							"admin/logout.php\">Logout</a>";
 					}
+					// if (!isset($_SESSION['username'])) {
+					// 	echo "<a class=\"nav-link\" href=\"" .
+					// 		BASE_URL .
+					// 		"registration/index.php\">Login</a>";
+					// } else {
+					// 	echo "<a class=\"nav-link\" href=\"" .
+					// 	BASE_URL .
+					// 	"admin/logout.php\">Logout</a>";
+					// }
 					?>
 				</li>
 			</ul>
