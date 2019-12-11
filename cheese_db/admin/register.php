@@ -35,31 +35,37 @@ include("../includes/header.php");
 <div class="row container">
 	<div class="col-8">
 
-		<h1>Login</h1>
+		<h1>Register</h1>
 		<br />
 		<br />
 
 
 
-<form id="myform" name="myform" method="post" action="login.php">
+  <form method="post" action="register.php">
   	<?php include('../registration/errors.php'); ?>
   	<div class="form-group">
-  		<label>Username</label>
-  		<input class="form-control" type="text" name="username" >
+  	  <label>Username</label>
+  	  <input class="form-control" type="text" name="username" value="<?php echo $username; ?>">
   	</div>
   	<div class="form-group">
-  		<label>Password</label>
-  		<input class="form-control" type="password" name="password">
+  	  <label>Email</label>
+  	  <input class="form-control" type="email" name="email" value="<?php echo $email; ?>">
   	</div>
   	<div class="form-group">
-  		<button type="submit" class="btn btn-info" name="login_user">Login</button>
+  	  <label>Password</label>
+  	  <input class="form-control" type="password" name="password_1">
+  	</div>
+  	<div class="form-group">
+  	  <label>Confirm password</label>
+  	  <input class="form-control" type="password" name="password_2">
+  	</div>
+  	<div class="form-group">
+  	  <button type="submit" class="btn btn-info" name="reg_user">Register</button>
   	</div>
   	<p>
-  		Not yet a member? <a href="register.php">Sign up</a>
+  		Already a member? <a href="login.php">Sign in</a>
   	</p>
   </form>
-
-
 
 
 

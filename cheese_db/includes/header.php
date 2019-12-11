@@ -134,22 +134,29 @@ include("mysql_connect.php");
 				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
+			<?php
+			if(isset($_SESSION['username'])){
+				echo "<span class=\"nav-link\">Hello " .
+				$_SESSION['username'] .
+						" - </span>";
+			}
+			?>
 				<li class="nav-item active">
 					<?php
-					if (isset($_SESSION['PHP_Test_Secure'])) {
-						echo "<a class=\"nav-link\" href=\"" .
-							BASE_URL .
-							"admin/logout.php\">Logout</a>";
-					}
-					// if (!isset($_SESSION['username'])) {
+					// if (isset($_SESSION['PHP_Test_Secure'])) {
 					// 	echo "<a class=\"nav-link\" href=\"" .
 					// 		BASE_URL .
-					// 		"registration/index.php\">Login</a>";
-					// } else {
-					// 	echo "<a class=\"nav-link\" href=\"" .
-					// 	BASE_URL .
-					// 	"admin/logout.php\">Logout</a>";
+					// 		"admin/logout.php\">Logout</a>";
 					// }
+					if (!isset($_SESSION['username'])) {
+						echo "<a class=\"nav-link\" href=\"" .
+							BASE_URL .
+							"admin/login.php\">Login</a>";
+					} else {
+						echo "<a class=\"nav-link\" href=\"" .
+						BASE_URL .
+						"registration/logout.php?logout='1'\">Logout</a>";
+					}
 					?>
 				</li>
 			</ul>
