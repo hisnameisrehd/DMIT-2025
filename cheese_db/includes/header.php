@@ -72,7 +72,7 @@ include("mysql_connect.php");
 		}
 
 		.thumb {
-			width: 115px;
+			width: 111px;
 			padding: 5px;
 			height: 104px;
 			overflow: hidden;
@@ -124,7 +124,10 @@ include("mysql_connect.php");
 
 				<li class="nav-item active">
 					<!-- This is a placeholder link. You will need to change this to link to your files. -->
+					<a class="nav-link" href="<?php echo BASE_URL ?>index.php">Explore</a>
 				</li>
+				<?php
+				if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin'): ?> 
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
 					<div id="custom-dropdown-menu" class="dropdown-menu" aria-labelledby="dropdown01">
@@ -132,6 +135,7 @@ include("mysql_connect.php");
 						<a class="dropdown-item" href="<?php echo BASE_URL ?>admin/edit.php">Edit</a>
 					</div>
 				</li>
+			<?php endif; ?>
 			</ul>
 			<ul class="navbar-nav ml-auto">
 			<?php
@@ -163,7 +167,7 @@ include("mysql_connect.php");
 		</div>
 	</nav>
 	<div style="margin-top: 5rem !important;" class="row mb-3 container">
-		<div class="col-8 pl-4">
+		<div class="col-4 pl-4">
 
 			<h3>Filter by Price range: </h3>
 			<br />
@@ -205,6 +209,29 @@ include("mysql_connect.php");
 				<input class="custom-form-input" type="submit">
 			</form>
 		</div>
+
+		<div class="col-4 pl-4">
+
+		<p>Search</p>
+			<?php
+			$displayby = $_GET['displayby'];
+			$displayvalue = "%".$_GET['displayvalue']."%";
+			if ($displayby == 'text') {
+        echo $displayvalue;
+        
+			}
+			?>
+
+			<form class="custom-form" method="get" action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
+				<input class="form-control" type="text" name="displayby" value="text" hidden>
+				<input class="form-control" type="text" name="displayvalue">
+				<br />
+				<input class="form-control btn btn-success" type="submit" value="Search">
+			</form>
+
+			</div>
+
+
 		<div class="col-2">
 			<?php
 			echo "<h4>Discover</h4>";

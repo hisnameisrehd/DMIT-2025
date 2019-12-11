@@ -5,7 +5,7 @@ include("includes/header.php");
 
 
 <div class="row container">
-	<div class="col-8">
+	<div class="col-8" style="height:609px;overflow:scroll;overflow-y:scroll;overflow-x:hidden;">
 	<div class="widget-styles">
 	
 		<?php

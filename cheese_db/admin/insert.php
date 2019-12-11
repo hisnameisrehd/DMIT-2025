@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['PHP_Test_Secure'])) {
+if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
 	// echo "Logged In.";
 } else {
 	//when using redirect, make sure that everything else works first. If not, remove redirect to debug.
@@ -12,7 +12,7 @@ include("../includes/_functions.php");
 ?>
 
 <div class="row container">
-	<div class="col-8">
+	<div class="col-8" style="height:609px;overflow:scroll;overflow-y:scroll;overflow-x:hidden;">
 
 		<h2>Insert</h2>
 

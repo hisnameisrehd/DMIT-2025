@@ -1,7 +1,9 @@
-<div class="col-4">
+<div class="col-4" style="height:609px;overflow:scroll;overflow-y:scroll;overflow-x:hidden;">
 
   <div class="widget-styles">
     <h4 class="widget-title">Filter By:</h4>
+ 
+
     <p>
       <button id="filter-button" class="btn btn-primary" data-toggle="collapse" type="button" data-target="#filterMilk" aria-expanded="false" aria-controls="filterMilk">View Milk</button>
     </p>
