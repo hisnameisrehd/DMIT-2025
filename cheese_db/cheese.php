@@ -1,4 +1,12 @@
 <?php
+session_start();
+if (isset($_SESSION['username'])) {
+	// echo "Logged In.";
+} else {
+	//when using redirect, make sure that everything else works first. If not, remove redirect to debug.
+	// echo "Not Logged In.";
+	header("Location:welcome.php");
+}
 include("includes/header.php");
 ?>
 

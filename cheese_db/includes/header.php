@@ -140,9 +140,9 @@ include("mysql_connect.php");
 			<ul class="navbar-nav ml-auto">
 			<?php
 			if(isset($_SESSION['username'])){
-				echo "<span class=\"nav-link\">Hello " .
+				echo "<h5 class=\"nav-link\">Hello <strong>" .
 				$_SESSION['username'] .
-						" - </span>";
+						"</strong> - </h5>";
 			}
 			?>
 				<li class="nav-item active">
@@ -180,7 +180,7 @@ include("mysql_connect.php");
 			}
 			?>
 
-			<form class="custom-form" method="get" action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
+			<form class="custom-form" method="get" action="<?php echo BASE_URL; ?>index.php">
 				<style>
 					.custom-textbox {
 						border: none;
@@ -210,23 +210,24 @@ include("mysql_connect.php");
 			</form>
 		</div>
 
-		<div class="col-4 pl-4">
+		<div class="col-4 pl-4 pr-4">
 
-		<p>Search</p>
+		<h3>Search by Name: </h3>
+			<br />
 			<?php
 			$displayby = $_GET['displayby'];
-			$displayvalue = "%".$_GET['displayvalue']."%";
+			$displayvalue = $_GET['displayvalue'];
 			if ($displayby == 'text') {
         echo $displayvalue;
         
 			}
 			?>
 
-			<form class="custom-form" method="get" action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
+			<form class="custom-form" method="get" action="<?php echo BASE_URL; ?>index.php">
 				<input class="form-control" type="text" name="displayby" value="text" hidden>
-				<input class="form-control" type="text" name="displayvalue">
+				<input class="form-control w-75" type="text" name="displayvalue">
 				<br />
-				<input class="form-control btn btn-success" type="submit" value="Search">
+				<input class="form-control btn btn-success w-75" type="submit" value="Search">
 			</form>
 
 			</div>

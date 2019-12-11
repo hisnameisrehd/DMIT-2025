@@ -25,8 +25,8 @@ include("includes/header.php");
 
 		if ($displayby && $displayvalue) {
 			if($displayby == "text"){
-				$sql = "SELECT * FROM cheese_db WHERE $displayby LIKE %'$displayvalue'%";
-				echo "<h1>test</h1>";
+				$sql = "SELECT * FROM cheese_db WHERE cheese LIKE '%$displayvalue%'";
+				echo "<h4 style=\"padding-left:2rem;color:brown;\">Cheese that matches your search '$displayvalue'.</h4>";
 
 			}
 			else{
