@@ -1,9 +1,9 @@
 <?php
-include("/home/npeters5/data/data.php");
-session_start();
-if (isset($_SESSION['PHP_Test_Secure'])) {
-	// echo "Logged In.";
+session_start(); 
+
+if (isset($_GET['logout'])) {
 	session_destroy();
-	header("Location:login.php");
+	unset($_SESSION['username']);
+	header("location: ../index.php");
 }
 include("../includes/header.php");

@@ -140,9 +140,9 @@ include("mysql_connect.php");
 			<ul class="navbar-nav ml-auto">
 			<?php
 			if(isset($_SESSION['username'])){
-				echo "<h5 class=\"nav-link\">Hello <strong>" .
+				echo "<h5 style=\"color:yellow;\" class=\"nav-link\"><span style=\"font-size:1rem;color:white;padding-right:0.3rem;\">You are currently logged on as </span>  <strong>" .
 				$_SESSION['username'] .
-						"</strong> - </h5>";
+						"</strong> <span style=\"color:white;\">-</span> </h5>";
 			}
 			?>
 				<li class="nav-item active">
@@ -155,11 +155,11 @@ include("mysql_connect.php");
 					if (!isset($_SESSION['username'])) {
 						echo "<a class=\"nav-link\" href=\"" .
 							BASE_URL .
-							"admin/login.php\">Login</a>";
+							"admin/login.php\"><b>Login</b></a>";
 					} else {
 						echo "<a class=\"nav-link\" href=\"" .
 						BASE_URL .
-						"registration/logout.php?logout='1'\">Logout</a>";
+						"admin/logout.php?logout='1'\"><b>Logout</b></a>";
 					}
 					?>
 				</li>
