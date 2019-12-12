@@ -55,8 +55,6 @@
       <br />
       <a class="dropdown-item" href="<?php echo BASE_URL; ?>index.php?displayby=age&min=15&max=24">15-24 Months</a>
       <br />
-      <a class="dropdown-item" href="<?php echo BASE_URL; ?>index.php?displayby=age&min=25&max=52">25-52 Months</a>
-      <br />
     </div>
 
 
